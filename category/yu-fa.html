@@ -15,7 +15,7 @@ Released   : 20100928
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>博客 - Docker</title>
+<title>博客 - 语法</title>
 <link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
 </head>
@@ -28,76 +28,13 @@ Released   : 20100928
         
 				<div id="content">
 					<div class="post">
-						<h2 class="title"><a href="https://blog.pygod.vip/docker-ming-ling.html">Docker 命令</a></h2>
-						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/docker.html">Docker</a></span></p>
-					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/docker.html">docker</a> / </span>
+						<h2 class="title"><a href="https://blog.pygod.vip/markdownyu-fa.html">markdown语法</a></h2>
+						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a> / </span>
 </p>
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-						 <h1>镜像相关</h1>
-<h2>docker images</h2>
-<p>查看docker镜像</p>
-<h2>docker build [OPTIONS] | PATH | URL | -</h2>
-<p>通过Dockerfile文件创建镜像</p>
-<h3>OPTIONS如下</h3>
-<ul>
-<li>--build-arg=[] :设置镜像创建时的变量；</li>
-<li>--cpu-shares :设置 cpu 使用权重；</li>
-<li>--cpu-period :限制 CPU CFS周期；</li>
-<li>--cpu-quota :限制 CPU CFS配额；</li>
-<li>--cpuset-cpus :指定使用的CPU id；</li>
-<li>--cpuset-mems :指定使用的内存 id；</li>
-<li>--disable-content-trust :忽略校验，默认开启；</li>
-<li>-f :指定要使用的Dockerfile路径；</li>
-<li>--force-rm :设置镜像过程中删除中间容器；</li>
-<li>--isolation :使用容器隔离技术；</li>
-<li>--label=[] :设置镜像使用的元数据；</li>
-<li>-m :设置内存最大值；</li>
-<li>--memory-swap :设置Swap的最大值为内存+swap，"-1"表示不限swap；</li>
-<li>--no-cache :创建镜像的过程不使用缓存；</li>
-<li>--pull :尝试去更新镜像的新版本；</li>
-<li>--quiet, -q :安静模式，成功后只输出镜像 ID；</li>
-<li>--rm :设置镜像成功后删除中间容器；</li>
-<li>--shm-size :设置/dev/shm的大小，默认值是64M；</li>
-<li>--ulimit :Ulimit配置。</li>
-<li>--squash :将 Dockerfile 中所有的操作压缩为一层。</li>
-<li>--tag, -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。</li>
-<li>--network: 默认 default。在构建期间设置RUN指令的网络模式</li>
-</ul>
-<h3>常用</h3>
-<blockquote>
-<p>docker build -t 镜像名:镜像版本 .</p>
-</blockquote>
-<h2>docker save [OPTIONS] IMAGE [IMAGE...]</h2>
-<p>将docker镜像打包成tar压缩文件</p>
-<h3>OPTIONS如下</h3>
-<ul>
-<li>-o:输出的文件</li>
-</ul>
-<h3>常用</h3>
-<blockquote>
-<p>docker save -o 自定义tar文件名 镜像名:镜像版本</p>
-</blockquote>
-<h2>docker load [OPTIONS]</h2>
-<p>加载文件，解析成镜像</p>
-<h3>OPTIONS如下</h3>
-<ul>
-<li>-i: 指定导入的文件，代替stdin</li>
-<li>-q：精简输出信息</li>
-</ul>
-<h3>常用</h3>
-<blockquote>
-<p>docker load -i 镜像压缩文件</p>
-</blockquote>
-<h1>容器相关</h1>
-<h2>docker run</h2>
-<p>从镜像开启一个容器</p>
-<h2>docker exec</h2>
-<p>执行一个<strong>运行中</strong>的容器</p>
-<h2>docker start</h2>
-<p>开启一个<strong>停止状态</strong>的容器</p>
-<h2>docker stop</h2>
-<p>停止一个<strong>运行中</strong>的容器</p>	
+						 <p>https://markdown.com.cn/basic-syntax/</p>	
 						</div>
 					</div>
 					<div style="clear: both;">&nbsp;</div>
@@ -116,9 +53,9 @@ Released   : 20100928
 						<li>
 							<h2>Catégories</h2>
 							<ul>
-								 <li class="active"><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/pelican.html">Pelican</a></li>
-								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
+								 <li class="active"><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
 							</ul>
 						</li>
 						<li>
