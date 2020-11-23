@@ -1,443 +1,188 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>博客 - solidity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="hanf">
 
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://blog.pygod.vip/theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://blog.pygod.vip/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="https://blog.pygod.vip/theme/css/font-awesome.css" rel="stylesheet">
 
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>博客 - solidity</title>
-<link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
-</head>
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
- 
-        
-				<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h2>
-						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></span></p>
-					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a> / </span>
-<span><a href="https://blog.pygod.vip/tag/solidity.html">solidity</a> / </span>
-</p>
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <p>要开发dapp，有很多事情要做，如：
-* 代码编译
-* 生成abis
-* 测试
-* 部署</p>
-<h1>步骤</h1>
-<ul>
-<li>编译，生成 <strong><em>字节码</em></strong> 和 <strong><em>函数描述符</em></strong> （Application Binary Interface，简称ABI）</li>
-<li>将 <strong><em>字节码</em></strong> 和 <strong><em>参数</em></strong> 打包到一个 <strong><em>事务</em></strong> 中</li>
-<li>部署合同的账户签署事务</li>
-<li>将已签署的事务发送到链上，并挖矿</li>
-</ul>
-<h1>编译</h1>
-<p>编译智能合约需要solc编译器，通常情况下，我们都是使用框架开发，而一般的框架都是预先内置了solc编译器。<br>
-常用框架有：
-* <a href="https://truffleframework.com">truffle</a>
-* <a href="https://embark.status.im">embark</a> 
-* <a href="https://github.com/ethereum/populus">populous</a></p>
-<p>这里我们使用原生的方式编译，所以需要手动安装solc。</p>
-<h2>安装solc编译器</h2>
-<div class="highlight"><pre><span></span><code><span class="err">add-apt-repository ppa:ethereum/ethereum</span>
-<span class="err">apt update</span>
-<span class="err">apt install solc</span>
-</code></pre></div>
+    <link href="https://blog.pygod.vip/theme/css/pygments.css" rel="stylesheet">
 
-<p>更多安装细节可去查看官方文档(http://solidity.readthedocs.io/en/latest/installing-solidity.html)<br>
-安装成功后，可通过下面命令查看solc版本  </p>
-<div class="highlight"><pre><span></span><code><span class="err">solc --version</span>
-</code></pre></div>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-<h2>安装jq</h2>
-<p>jq是linux系统下一个格式化输出json的工具，这里安装jq只是为了更好的查看json文件而已，并非必须  </p>
-<div class="highlight"><pre><span></span><code><span class="err">apt install jq</span>
-</code></pre></div>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://blog.pygod.vip/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://blog.pygod.vip/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://blog.pygod.vip/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://blog.pygod.vip/theme/images/apple-touch-icon-114x114.png">
 
-<p>更多安装jq的细节移步至(https://stedolan.github.io/jq/download)</p>
-<h2>编译solidity文件</h2>
-<p>通过编译solidity文件，我们会得到：
-* 字节码
-* ABI(通过ABI可与已经部署的合约进行交互)</p>
-<h3>创建工作目录/文件</h3>
-<div class="highlight"><pre><span></span><code><span class="err">mkdir dapp-series-bounties</span>
-<span class="err">cd dapp-series-bounties</span>
-<span class="err">touch Bounties.sol</span>
-</code></pre></div>
+    <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
 
-<h3>编写sol文件</h3>
-<p>将(https://github.com/kauri-io/kauri-fullstack-dapp-tutorial-series/blob/master/manual-compilation-and-deploy/Bounties.sol)中的文件内容拷贝下来写到自己的Bounties.sol文件中<br>
-<strong><em>这里要注意文件中的solidity编译器版本需要和你本地安装solidity编译器版本保持一致</em></strong></p>
-<h3>执行编译</h3>
-<p>执行编译的命令如下：  </p>
-<div class="highlight"><pre><span></span><code><span class="err">solc --combined-json abi,bin Bounties.sol &gt; Bounties.json</span>
-</code></pre></div>
+  </head>
 
-<p><strong>上述命令会将编译生成的 <em>字节码</em> 和 <em>abi</em>  写入到Bounties.json文件中</strong>  </p>
-<h1>部署</h1>
-<p>所谓部署，就是上链，上哪个链？即 需要一个以太坊环境进行部署。<br>
-为此，我们将使用 <strong>Ganache-CLI</strong> 运行本地开发区块链环境。</p>
-<h2>安装ganache-cli</h2>
-<div class="highlight"><pre><span></span><code><span class="err">npm install -g ganache-cli</span>
-</code></pre></div>
+  <body>
 
-<p>由于我使用的是ubuntu，会报没有npm命令，所以执行下述命令安装npm  </p>
-<blockquote>
-<h3>安装npm</h3>
-<p>sudo apt install npm</p>
-<h3>配置npm源</h3>
-<p>npm config set registry http://registry.npm.taobao.org</p>
-<h3>更新npm</h3>
-<p>npm install npm -g</p>
-</blockquote>
-<p><strong>个人理解ganache-cli就是区块链的本地开发环境</strong></p>
-<h2>安装geth(go-etherenum)</h2>
-<h3>什么是geth</h3>
-<p>文档翻译过来的意思是：一个以太坊节点的Go实现<br>
-太难理解，下述来自(https://www.jianshu.com/p/9eb600f0e0e4)的通俗解释<br>
-* Geth可以当客户端来使用</p>
-<blockquote>
-<p>打开Geth，用户可以创建自己的以太坊私有链、管理账户、挖矿、交易、部署执行智能合约等，用户还可以下载以太坊主链、解析主链上任意交易数据等。
-* Geth可以当服务器来使用
-Geth提供很多服务和丰富的API，用户可以开发程序通过调用Geth服务，实现自己想要的功能，比如获取一段时间内以太币的所有交易账户。  </p>
-</blockquote>
-<h3>安装命令</h3>
-<div class="highlight"><pre><span></span><code><span class="err">apt install software-properties-common</span>
-<span class="err">add-apt-repository -y ppa:ethereum/ethereum</span>
-<span class="err">apt update</span>
-<span class="err">apt install ethereum</span>
-</code></pre></div>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://blog.pygod.vip/index.html">博客 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="https://blog.pygod.vip/category/docker.html">
+						<i class="icon-folder-open icon-large"></i>Docker
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://blog.pygod.vip/category/pelican.html">
+						<i class="icon-folder-open icon-large"></i>Pelican
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://blog.pygod.vip/category/yu-fa.html">
+						<i class="icon-folder-open icon-large"></i>语法
+					</a>
+                  </li>
 
-<p>更多安装细节参考(https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)  </p>
-<h2>启动ganache-cli 并连接geth控制台</h2>
-<h3>启动ganache-cli区块链本地开发环境</h3>
-<div class="highlight"><pre><span></span><code><span class="err">ganache-cli</span>
-</code></pre></div>
+                          <ul class="nav pull-right">
+                                <li><a href="https://blog.pygod.vip/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
 
-<p>启动后，会给到你一些东西
-* 账号(Available Accounts)
-* 私钥(Private Keys)
-* 钱包(HD Wallet)
-* Gas Price
-* Gas Limit
-* 启动服务(监听8545端口)</p>
-<h3>连接geth控制台到环境</h3>
-<div class="highlight"><pre><span></span><code><span class="err">geth attach http://localhost:8545</span>
-</code></pre></div>
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-<h2>部署前的准备（获取字节码和abi）</h2>
-<p>要准备好 <strong>字节码</strong> 和 <strong>abi</strong>，在编译的时候，已经将这些东西写入到Bounties.json文件中了，所以需要将编译好json文件加载到geth控制台</p>
-<h3>准备js文件</h3>
-<p>因为(可能)geth控制台不能加载json文件，所以需要将json文件的内容写入到一个js文件(Bounties.js)中
-在js文件中定义一个变量，其值等于sol文件编译的结果</p>
-<div class="highlight"><pre><span></span><code><span class="err">echo &quot;var bountiesOuput=&quot; &gt; Bounties.js</span>
-<span class="err">cat Bounties.json &gt;&gt; Bounties.js</span>
-</code></pre></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2020-11-21T11:10:00+08:00">
+        <i class="icon-calendar"></i>Sat 21 November 2020
+</abbr>
+<span class="label">By</span>
+<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
+<span class="label">Category</span>
+<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
 
-<h3>geth控制台加载js文件</h3>
-<p>通过加载js文件，可以把变量加载到控制台环境中<br>
-在geth控制台中运行</p>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; loadScript(&#39;Bounties.js&#39;)</span>
-<span class="err">true</span>
-<span class="err">&gt; bountiesOutput</span>
-<span class="err">{</span>
-<span class="c">contracts: {</span>
-<span class="err">Bounties.sol:Bounties: {</span>
-<span class="c">abi: &quot;[{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;_bountyId\&quot;,\&quot;type\&quot;:\&quot;uint256\...&quot;}]&quot;}],</span>
-<span class="c">bin: &quot;608060405234801561001057600080fd5b506...&quot;</span>
-<span class="err">}</span>
-<span class="err">},</span>
-<span class="c">version: &quot;0.4.24+commit.e67f0147.Darwin.appleclang&quot;</span>
-<span class="err">}</span>
-</code></pre></div>
 
-<h3>geth获取abi</h3>
-<p>因为abi是字符串格式，所以需要先解析</p>
-<h4>查看abi类型</h4>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; typeof bountiesOutput.contracts[&quot;Bounties.sol:Bounties&quot;].abi</span>
-<span class="err">&quot;string&quot;</span>
-</code></pre></div>
+<span class="label">Tags</span>
+	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
+	<a href="https://blog.pygod.vip/tag/solidity.html"><i class="icon-tag"></i>solidity</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>编译部署智能合约，想看原汁原味的英文文档可移步至(https://kauri.io/#communities/Getting%20started%20with%20dapp%20development/understanding-smart-contract-compilation-and-depl)，本文做了一些简单翻译，且只针对ubuntu系统</p>
+                        <a class="btn primary xsmall" href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">more ...</a>
+                </div>
+        </div>
+        <hr />
 
-<h4>解析abi</h4>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; var bountiesContract = eth.contract(JSON.parse(bountiesOutput.contracts[&quot;Bounties.sol:Bounties&quot;].abi));</span>
-<span class="err">undefined</span>
-</code></pre></div>
+        </div><!--/span-->
 
-<h4>查看解析后的abi</h4>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; bountiesContract</span>
-<span class="err">{</span>
-<span class="c">abi: [{</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;fulfillBounty&quot;,</span>
-<span class="c">outputs: [],</span>
-<span class="c">payable: false,</span>
-<span class="c">stateMutability: &quot;nonpayable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;issueBounty&quot;,</span>
-<span class="c">outputs: [{...}],</span>
-<span class="c">payable: true,</span>
-<span class="c">stateMutability: &quot;payable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="err">....</span>
-<span class="c">at: function(address, callback),</span>
-<span class="c">getData: function(),</span>
-<span class="c">new: function()</span>
-</code></pre></div>
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="https://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="https://www.python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="https://palletsprojects.com/p/jinja/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="https://blog.pygod.vip/" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
+    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
 
-<h3>geth控制台获取字节码</h3>
-<p>将bin（已编译的二进制字节码）准备为变量。 注意，为了获得期望的十六进制值，我们需要在开头添加“ 0x”。</p>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; var bountiesBin = &quot;0x&quot; + bountiesOutput.contracts[&quot;Bounties.sol:Bounties&quot;].bin</span>
-<span class="err">undefined</span>
-</code></pre></div>
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://blog.pygod.vip/category/docker.html">
+    <i class="icon-folder-open icon-large"></i>Docker
+</a>
+</li>
+<li>
+<a href="https://blog.pygod.vip/category/pelican.html">
+    <i class="icon-folder-open icon-large"></i>Pelican
+</a>
+</li>
+<li>
+<a href="https://blog.pygod.vip/category/yu-fa.html">
+    <i class="icon-folder-open icon-large"></i>语法
+</a>
+</li>
 
-<h2>开始部署</h2>
-<h3>构造交易对象</h3>
-<ul>
-<li>从coinbase账户发送</li>
-<li>交易数据</li>
-<li>gas值</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; var deployTransationObject = { from: eth.coinbase, data: bountiesBin, gas: 3000000 };</span>
-<span class="err">undefined</span>
-</code></pre></div>
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
 
-<h3>通过new构造交易实例（使用交易对象作为参数）</h3>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; var bountiesInstance = bountiesContract.new(deployTransationObject);</span>
-<span class="err">&gt; bountiesInstance</span>
-<span class="err">{</span>
-<span class="c">abi: [{</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;fulfillBounty&quot;,</span>
-<span class="c">outputs: [],</span>
-<span class="c">payable: false,</span>
-<span class="c">stateMutability: &quot;nonpayable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;issueBounty&quot;,</span>
-<span class="c">outputs: [{...}],</span>
-<span class="c">payable: true,</span>
-<span class="c">stateMutability: &quot;payable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="err">...}],</span>
-<span class="c">address: undefined,</span>
-<span class="c">transactionHash: &quot;0xbeee5a5db59504c289e30a9843d8bf05bd0dcd66831993fde6a3986e2f022a52&quot;</span>
-<span class="err">}</span>
-</code></pre></div>
 
-<h3>几段看不懂的翻译（对以太坊还不太熟）</h3>
-<p>因此，bountiesInstance是一个web3对象，代表部署到我们的开发环境中的bounties合同实例。</p>
-<p>根据所用Geth版本的不同，合同实例中可能会或可能不会设置地址字段。 通常，这将在挖掘部署合同的事务时设置。</p>
-<p>如果没有，因为上述地址字段设置为undefined，我们将必须手动设置合同地址</p>
-<h3>设置合同地址</h3>
-<p>如果合约中address为空，则需要手动设置合同地址</p>
-<h4>查看合同地址</h4>
-<p>我们可以通过查看部署合同交易的交易收据来找到合同地址。 我们的bountiesInstance对象将具有对transactionHash的引用。</p>
-<div class="highlight"><pre><span></span><code><span class="err">eth.getTransactionReceipt(bountiesInstance.transactionHash);</span>
-<span class="err">{</span>
-<span class="c">blockHash: &quot;0x565c4ebb83d9036518c33634d425f37b9ef3aa125e9b09386fbbdd44099892d9&quot;,</span>
-<span class="c">blockNumber: 1,</span>
-<span class="c">contractAddress: &quot;0x1f81f1dd0de1670eac0bfa9e00a854733470d646&quot;,</span>
-<span class="c">cumulativeGasUsed: 911612,</span>
-<span class="c">gasUsed: 911612,</span>
-<span class="c">logs: [],</span>
-<span class="c">logsBloom: &quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;,</span>
-<span class="c">status: &quot;0x1&quot;,</span>
-<span class="c">transactionHash: &quot;0xbeee5a5db59504c289e30a9843d8bf05bd0dcd66831993fde6a3986e2f022a52&quot;,</span>
-<span class="c">transactionIndex: 0</span>
-<span class="err">}</span>
-</code></pre></div>
+</ul>        </div><!--/.well -->
 
-<p>上述可知，合同地址是<strong>0x565c4ebb83d9036518c33634d425f37b9ef3aa125e9b09386fbbdd44099892d9</strong>  </p>
-<h4>创建指向正确合约地址的合约对象</h4>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; var bountiesAddress =  eth.getTransactionReceipt(bountiesInstance.transactionHash).contractAddress</span>
-<span class="err">&gt; var bountiesInstance = bountiesContract.at(bountiesAddress)</span>
-<span class="err">undefined</span>
-<span class="err">&gt; bountiesInstance</span>
-<span class="err">{</span>
-<span class="c">abi: [{</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;fulfillBounty&quot;,</span>
-<span class="c">outputs: [],</span>
-<span class="c">payable: false,</span>
-<span class="c">stateMutability: &quot;nonpayable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="c">constant: false,</span>
-<span class="c">inputs: [{...}, {...}],</span>
-<span class="c">name: &quot;issueBounty&quot;,</span>
-<span class="c">outputs: [{...}],</span>
-<span class="c">payable: true,</span>
-<span class="c">stateMutability: &quot;payable&quot;,</span>
-<span class="c">type: &quot;function&quot;</span>
-<span class="err">}, {</span>
-<span class="err">...}],</span>
-<span class="c">address: &quot;0x1f81f1dd0de1670eac0bfa9e00a854733470d646&quot;,</span>
-<span class="c">transactionHash: null,</span>
-<span class="c">BountyCancelled: function(),</span>
-<span class="c">BountyFulfilled: function(),</span>
-<span class="c">BountyIssued: function(),</span>
-<span class="c">FulfillmentAccepted: function(),</span>
-<span class="c">acceptFulfillment: function(),</span>
-<span class="c">allEvents: function(),</span>
-<span class="c">bounties: function(),</span>
-<span class="c">cancelBounty: function(),</span>
-<span class="c">fulfillBounty: function(),</span>
-<span class="c">issueBounty: function()</span>
-</code></pre></div>
+      </div><!--/row-->
 
-<p>可见，合约地址已经设置成功</p>
-<h2>与合约交互</h2>
-<p>实则是合约部署好后，通过abi设置一个触发条件，用于自动执行合约<br>
-通过合约对象的 <strong>issueBounty</strong> 方法来设置触发条件，其参数有：
-* string_data:
-* unit64_deadline: 合约结束时间
-* data</p>
-<h3>命令类似如下：</h3>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;</span> <span class="nt">bountiesInstance</span><span class="p">.</span><span class="nc">issueBounty</span><span class="o">(</span><span class="s2">&quot;some requirements&quot;</span><span class="o">,</span><span class="s2">&quot;1691452800&quot;</span><span class="o">,</span><span class="p">{</span> <span class="n">from</span><span class="p">:</span> <span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">,</span> <span class="n">value</span><span class="o">:</span> <span class="n">web3</span><span class="o">.</span><span class="nf">toWei</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ether&quot;</span><span class="p">),</span> <span class="n">gas</span><span class="o">:</span> <span class="mi">3000000</span> <span class="p">}</span><span class="o">);</span>
-<span class="s2">&quot;0xb3a41fa36c09010abbfa9bf80c3cd11242e4476506d6bf8b363b8feeb3cf946d&quot;</span>
+      <hr>
 
-<span class="o">&gt;</span> <span class="nt">eth</span><span class="p">.</span><span class="nc">getTransactionReceipt</span><span class="o">(</span><span class="s2">&quot;0xb3a41fa36c09010abbfa9bf80c3cd11242e4476506d6bf8b363b8feeb3cf946d&quot;</span><span class="o">)</span>
-<span class="p">{</span>
-<span class="n">blockHash</span><span class="p">:</span> <span class="s2">&quot;0x8acd35b251c3f1c23a6276540e73b958de28686a89367ed108bef9f614771099&quot;</span><span class="p">,</span>
-<span class="n">blockNumber</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-<span class="n">contractAddress</span><span class="o">:</span> <span class="n">null</span><span class="p">,</span>
-<span class="n">cumulativeGasUsed</span><span class="o">:</span> <span class="mi">133594</span><span class="p">,</span>
-<span class="n">gasUsed</span><span class="o">:</span> <span class="mi">133594</span><span class="p">,</span>
-<span class="n">logs</span><span class="o">:</span> <span class="cp">[</span><span class="p">{</span>
-<span class="nx">address</span><span class="p">:</span> <span class="s2">&quot;0x1f81f1dd0de1670eac0bfa9e00a854733470d646&quot;</span><span class="p">,</span>
-<span class="nx">blockHash</span><span class="p">:</span> <span class="s2">&quot;0x8acd35b251c3f1c23a6276540e73b958de28686a89367ed108bef9f614771099&quot;</span><span class="p">,</span>
-<span class="nx">blockNumber</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-<span class="nx">data</span><span class="p">:</span> <span class="s2">&quot;0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c74a4fba809c8f0e6b410b349f2908a4dbb881230000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000011736f6d6520726571756972656d656e7473000000000000000000000000000000&quot;</span><span class="p">,</span>
-<span class="nx">logIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="nx">topics</span><span class="p">:</span> <span class="err">[</span><span class="s2">&quot;0xba1576d8891bfe57a45ac4b986d4a4aa912c62f44771d4eec8ab2ce06e3be5b7&quot;</span><span class="cp">]</span><span class="p">,</span>
-<span class="n">transactionHash</span><span class="o">:</span> <span class="s2">&quot;0xb3a41fa36c09010abbfa9bf80c3cd11242e4476506d6bf8b363b8feeb3cf946d&quot;</span><span class="p">,</span>
-<span class="n">transactionIndex</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="n">type</span><span class="o">:</span> <span class="s2">&quot;mined&quot;</span>
-<span class="p">}</span><span class="o">],</span>
-<span class="nt">logsBloom</span><span class="o">:</span> <span class="s2">&quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000040000000000000000000000000000004000000000000010000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="o">,</span>
-<span class="nt">status</span><span class="o">:</span> <span class="s2">&quot;0x1&quot;</span><span class="o">,</span>
-<span class="nt">transactionHash</span><span class="o">:</span> <span class="s2">&quot;0xb3a41fa36c09010abbfa9bf80c3cd11242e4476506d6bf8b363b8feeb3cf946d&quot;</span><span class="o">,</span>
-<span class="nt">transactionIndex</span><span class="o">:</span> <span class="nt">0</span>
-<span class="err">}</span>
-</code></pre></div>
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
 
-<h3>结果解读</h3>
-<p>上面是发出赏金交易的日志输出和显示交易已成功开采的交易收据。</p>
-<p>因为这是第一个颁发的赏金，所以我们从合同代码中知道issueBounty函数将创建bountyId为0的赏金。</p>
-<h3>检查数据是否正确</h3>
-<p>现在我们知道了bountyId，我们可以调用bountiesInstance web3对象的bounties函数来仔细检查issueBounty函数是否正确存储了我们的数据</p>
-<div class="highlight"><pre><span></span><code><span class="err">&gt; bountiesInstance.bounties.call(0)</span>
-<span class="err">[&quot;0xc74a4fba809c8f0e6b410b349f2908a4dbb88123&quot;, 1691452800, &quot;some requirements&quot;, 0, 1000000000000000000]</span>
-</code></pre></div>
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
 
-<p>完事！！！！</p>
-<h1>总结</h1>
-<ul>
-<li>编译出Bounties.sol智能合约</li>
-<li>将其部署到本地开发区块链</li>
-<li>通过发送交易来发放赏金</li>
-<li>通过致电合同签出赏金数据</li>
-</ul>
-<h1>题外</h1>
-<p>经过一系列的苦逼操作后，终于完成了一个智能合约的编译部署。<br>
-挺麻烦的，写智能合约就够苦逼了，编译部署还这么麻烦。<br>
-所以我们才需要框架，框架向我们隐藏了此过程的复杂性，让我们在开发dApp时专注于编写智能合约即可。
-框架再推：
-* <a href="https://truffleframework.com/">truffle</a>
-* <a href="https://embark.status.im/">embark</a> 
-* <a href="https://github.com/ethereum/populus">populous</a> </p>	
-						</div>
-					</div>
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="https://blog.pygod.vip">博客</a></h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li ><a href="https://blog.pygod.vip">Home</a></li>
-							<li ><a href="https://blog.pygod.vip/archives.html">Archives</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>Catégories</h2>
-							<ul>
-								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
-								 <li ><a href="https://blog.pygod.vip/category/pelican.html">Pelican</a></li>
-								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Blogroll</h2>
-							<ul>
-                                                            <li><a href="https://getpelican.com/">Pelican</a></li>
-                                                            <li><a href="https://www.python.org/">Python.org</a></li>
-                                                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
-                                                            <li><a href="#">You can modify those links in your config file</a></li>
-							</ul>
-						</li>
-                                                <li>
-                                                        <h2>Social</h2>
-                                                        <ul>
-                                                            <li><a href="https://blog.pygod.vip/" rel="alternate">Flux Atom</a></li>
-                                                            <li><a href="#">You can add links in your config file</a></li>
-                                                            <li><a href="#">Another social link</a></li>
-                                                        </ul>
-                                                </li><!-- /.social -->
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a></li>
-                                                                <li><a href="https://blog.pygod.vip/tag/solidity.html">solidity</a></li>
-                                                                <li><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a></li>
-                                                                <li><a href="https://blog.pygod.vip/tag/pelican.html">pelican</a></li>
-                                                                <li><a href="https://blog.pygod.vip/tag/docker.html">docker</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
+    </div><!--/.fluid-container-->
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-<!-- end #footer -->
-</body>
+
+<script type="text/javascript">
+    var disqus_shortname = 'disqus_ca3p2R4hDP';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://blog.pygod.vip/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://blog.pygod.vip/theme/js/bootstrap.min.js"></script>
+  </body>
 </html>
