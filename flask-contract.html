@@ -327,8 +327,8 @@ solidity是用于编写以太坊智能合约的语言。</p>
 </code></pre></div>
 
 <h1>5 使用python库进行编译/部署</h1>
-<h2>5.1 使用web3来启动一个区块链服务</h2>
-<p>原生的做法是在一个终端启动服务，ganache-cli  </p>
+<h2>5.1 实例化web3对象</h2>
+<p>web3对象用于和合约做交互，如，通过abi和contract_address获取合约中的user对象</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
 <span class="c1"># web3.py instance</span>
 <span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:8545&quot;</span><span class="p">))</span>
