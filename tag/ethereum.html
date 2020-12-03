@@ -28,7 +28,7 @@ Released   : 20100928
         
 				<div id="content">
 					<div class="post">
-						<h2 class="title"><a href="https://blog.pygod.vip/web3py_intro_quickstart.html">web3py_intro_quickstart</a></h2>
+						<h2 class="title"><a href="https://blog.pygod.vip/gai-shu.html">概述</a></h2>
 						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/web3py.html">web3py</a></span></p>
 					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a> / </span>
 <span><a href="https://blog.pygod.vip/tag/web3.html">web3</a> / </span>
@@ -36,77 +36,205 @@ Released   : 20100928
 </p>
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-						 <h1>安装</h1>
-<p>使用pip命令安装：</p>
-<div class="highlight"><pre><span></span><code>$ pip install web3
+						 <p>该文章目的是让您了解Web3.py的所有功能，并作为一个快速的参考指南。</p>
+<h1>配置</h1>
+<p>通过pip安装完web3后，除了默认值之外，你还需要指定provider和一些中间件。  </p>
+<h2>providers</h2>
+<p>providers是web3连接区块链的方式。web3库有以下内置几个providers：<br>
+- web3.IPCProvider：用于连接基于<strong>ipc套接字</strong>的 JSON-RPC 服务器
+- web3.HTTPProvider：用于连接基于<strong>http和https</strong>的 JSON-RPC 服务器
+- web3.WebsockerProvider：用于连接基于<strong>ws和wss的websocker</strong>的 JSON-RPC服务器</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+
+<span class="c1"># IPCProvider:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">IPCProvider</span><span class="p">(</span><span class="s1">&#39;./path/to/geth.ipc&#39;</span><span class="p">))</span>
+
+<span class="c1"># HTTPProvider:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+
+<span class="c1"># WebsocketProvider:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">WebsocketProvider</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:8546&#39;</span><span class="p">))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w3</span><span class="o">.</span><span class="n">isConnected</span><span class="p">()</span>
+<span class="bp">True</span>
 </code></pre></div>
 
-<h1>使用</h1>
-<p>该库依赖于以太坊节点的<strong>连接</strong>，如：本地开发的时候，启动的一个ganache-cli。 <br>
-我们称这些<strong>连接</strong>为<strong>providers</strong>，并且有很多方式可以去配置他们。具体参考(https://web3py.readthedocs.io/en/stable/providers.html#providers)  </p>
-<h2>provider: 本地Geth节点</h2>
-<h3>显示指定连接方式</h3>
-<p>显示的连接本地Geth节点有三种方式，分别如下  </p>
-<h4>IPC连接</h4>
-<p>最安全的</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">IPCProvider</span><span class="p">(</span><span class="s1">&#39;./path/to/geth.ipc&#39;</span><span class="p">))</span>
+<p>更多信息(如连接到远程节点；provider自动检测；使用测试provider)参考(https://web3py.readthedocs.io/en/stable/providers.html#providers)  </p>
+<h2>中间件</h2>
+<p>可以通过中间件配置web3实例。<br>
+就像剥洋葱一样，每一层中间件都可能影响<strong>入参request</strong> 和 <strong>出参</strong>。<br>
+<a href="https://web3py.readthedocs.io/en/stable/middleware.html#modifying-middleware">该文档</a>包含了一些可视化的东西。  </p>
+<p>有些中间件是<a href="https://web3py.readthedocs.io/en/stable/middleware.html#default-middleware">默认加载的</a>。
+你可以 <strong>添加/注入/替换</strong> 任何一个中间件，也可以 <strong>禁用/删除/清除</strong> 任何一个中间件。</p>
+<h1>你的keys</h1>
+<p>想要进行交易，那么 <strong>私钥</strong> 必不可少。你 <strong>密钥的安全方式</strong> 将决定你在web3中如何 <strong>创建交易</strong> 和 <strong>发送交易</strong>。  </p>
+<p>像<a href="https://geth.ethereum.org/">Geth</a>这种的本地节点，会帮你管理你的密钥。你可以通过使用 <strong>web3.eth.account</strong> 来引用你的密钥。  </p>
+<p>像<a href="https://infura.io/">Infura</a>这样的托管(远程)节点，不知道你的密钥是多少。这种情况下，你需要使用你<strong>本地的私钥</strong> 来 <strong>签署事务</strong>。  </p>
+<p>关于密钥之间的区别，可参考<a href="https://web3py.readthedocs.io/en/stable/web3.eth.account.html#eth-account">这里</a>  </p>
+<h1>基础api</h1>
+<p><a href="https://web3py.readthedocs.io/en/stable/web3.main.html#web3-base">Web3</a>类包含很多实用的函数。  </p>
+<h2>编码解码函数</h2>
+<ul>
+<li>Web3.is_encodable()</li>
+<li>Web3.toBytes()</li>
+<li>Web3.toHex()</li>
+<li>Web3.toInt()</li>
+<li>Web3.toJSON()</li>
+<li>Web3.toText()</li>
+</ul>
+<h2>地址函数</h2>
+<ul>
+<li>Web3.isAddress()</li>
+<li>Web3.isChecksumAddress()</li>
+<li>Web3.toChecksumAddress()</li>
+</ul>
+<h2>货币换算</h2>
+<ul>
+<li>Web3.fromWei()</li>
+<li>Web3.toWei()</li>
+</ul>
+<h2>加密哈希</h2>
+<ul>
+<li>Web3.keccak()</li>
+<li>Web3.solidityKeccak()</li>
+</ul>
+<h1>eth的api</h1>
+<p>与以太坊交互的最常用的api可以在web3.eth命名空间下找到。<a href="https://web3py.readthedocs.io/en/stable/examples.html#examples">完整示例参考</a>  </p>
+<h2>获取数据</h2>
+<p>查看帐户余额(getBalance)、事务(getTransaction)和块数据(getBlock)是Web3.py中最常见的起点。<br>
+- web3.eth.getBalance()
+- web3.eth.getBlock()
+- web3.eth.getBlockTransactionCount()
+- web3.eth.getCode()
+- web3.eth.getProof()
+- web3.eth.getStorageAt()
+- web3.eth.getTransaction()
+- web3.eth.getTransactionByBlock()
+- web3.eth.getTransactionCount()
+- web3.eth.getUncleByBlock()
+- web3.eth.getUncleCount()</p>
+<h2>执行交易</h2>
+<p>最常用的有 <strong>sendTransaction</strong> 或者 <strong>signTransaction 和 sendRawTransaction 的组合</strong>。<br>
+如果与智能合约进行交互，则存在专用的API。<a href="https://web3py.readthedocs.io/en/stable/overview.html#overview-contracts">参考</a><br>
+- web3.eth.sendTransaction()
+- web3.eth.signTransaction()
+- web3.eth.sendRawTransaction()
+- web3.eth.replaceTransaction()
+- web3.eth.modifyTransaction()
+- web3.eth.waitForTransactionReceipt()
+- web3.eth.getTransactionReceipt()
+- web3.eth.sign()
+- web3.eth.signTypedData()
+- web3.eth.estimateGas()
+- web3.eth.generateGasPrice()
+- web3.eth.setGasPriceStrategy()</p>
+<h2>合约</h2>
+<p>合约最常用是：在已部署的合约上<strong>部署</strong>和<strong>执行功能</strong>。<br>
+部署合约需要先编译，这个编译不一定要在本地完成，可以使用:
+- 本地solidity编译器，如：本地安装solc编译器（apt install solc）
+- 在线编辑器<a href="http://remix.ethereum.org/">Remix</a>
+- 开发框架，如<a href="https://eth-brownie.readthedocs.io/en/stable/">Brownie</a>  </p>
+<p>一旦合约对象被实例化了，可调用构造函数contructor的transact方法来发布一个合约实例，如下：  </p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="err">声明合约对象</span>
+<span class="n">ExampleContract</span> <span class="o">=</span> <span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">abi</span><span class="p">,</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">bytecode</span><span class="p">)</span>
+
+<span class="o">#</span> <span class="err">发布合约，得到交易</span><span class="n">hash</span>
+<span class="n">tx_hash</span> <span class="o">=</span> <span class="n">ExampleContract</span><span class="p">.</span><span class="k">constructor</span><span class="p">().</span><span class="n">transact</span><span class="p">()</span>
+
+<span class="o">#</span> <span class="err">发起等待交易，得到等待交易的对象</span>
+<span class="n">tx_receipt</span> <span class="o">=</span> <span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">waitForTransactionReceipt</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span>
+
+<span class="o">#</span> <span class="err">等待交易的地址</span>
+<span class="n">tx_receipt</span><span class="p">.</span><span class="n">contractAddress</span>
 </code></pre></div>
 
-<h4>HTTP连接</h4>
-<p>端口8545</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+<p>一旦加载到合约对象中，已发布的合约对象的方法在w3.eth命名空间中可用，具体表现如下：</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="err">根据待交易的地址和</span><span class="n">abi获取合约对象</span>
+<span class="n">deployed_contract</span> <span class="o">=</span> <span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">contract</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">tx_receipt</span><span class="p">.</span><span class="n">contractAddress</span><span class="p">,</span> <span class="n">abi</span><span class="o">=</span><span class="n">abi</span><span class="p">)</span>
+
+<span class="n">deployed_contract</span><span class="p">.</span><span class="n">functions</span><span class="p">.</span><span class="n">myFunction</span><span class="p">(</span><span class="mi">42</span><span class="p">).</span><span class="n">transact</span><span class="p">()</span>
 </code></pre></div>
 
-<h4>websocket连接</h4>
-<p>端口8546</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">WebsocketProvider</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:8546&#39;</span><span class="p">))</span>
+<p>如果你想从合约中获取数据（或者在本地查看事务结果，而不是在网络上执行），你可以使用：<br>
+- <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractFunction.call">ContractFunction.call</a>方法
+- <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractCaller">ContractCaller</a>方法</p>
+<div class="highlight"><pre><span></span><code><span class="err">deployed_contract.functions.getMyValue().call()</span>
+<span class="err"># 或者</span>
+<span class="err">deployed_contract.caller().getMyValue()</span>
 </code></pre></div>
 
-<h3>隐式自动连接</h3>
-<p>如果你坚持使用 <strong>默认端口</strong> 或者 <strong>本地IPC文件</strong>，可以自动检测provider。参考：(https://web3py.readthedocs.io/en/stable/providers.html#automatic-provider)  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto</span> <span class="kn">import</span> <span class="n">w3</span>
+<p>想要了解更多，参考 https://web3py.readthedocs.io/en/stable/contracts.html#contracts</p>
+<ul>
+<li>web3.eth.contract()</li>
+<li>Contract.address</li>
+<li>Contract.abi</li>
+<li>Contract.bytecode</li>
+<li>Contract.bytecode_runtime</li>
+<li>Contract.functions</li>
+<li>Contract.events</li>
+<li>Contract.fallback</li>
+<li>Contract.constructor()</li>
+<li>Contract.encodeABI()</li>
+<li>web3.contract.ContractFunction</li>
+<li>web3.contract.ContractEvents</li>
+</ul>
+<h2>日志和过滤器</h2>
+<p>当 <strong>新块被挖出</strong> 或者 <strong>合约发出特定的事件</strong> 时，你想做出一些反应，可以用web3过滤器。  </p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="err">刷选新块</span>
+<span class="n">new_filter</span> <span class="o">=</span> <span class="n">web3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;latest&#39;</span><span class="p">)</span>
+
+<span class="o">#</span> <span class="err">合同事件</span><span class="p">(</span><span class="err">名为“</span><span class="n">MyEvent</span><span class="err">”</span><span class="p">)</span><span class="err">过滤器</span>
+<span class="n">new_filter</span> <span class="o">=</span> <span class="n">deployed_contract</span><span class="p">.</span><span class="n">events</span><span class="p">.</span><span class="n">MyEvent</span><span class="p">.</span><span class="n">createFilter</span><span class="p">(</span><span class="n">fromBlock</span><span class="o">=</span><span class="s1">&#39;latest&#39;</span><span class="p">)</span>
+
+<span class="o">#</span> <span class="err">检索结果过滤</span>
+<span class="n">new_filter</span><span class="p">.</span><span class="n">get_all_entries</span><span class="p">()</span>
+<span class="n">new_filter</span><span class="p">.</span><span class="n">get_new_entries</span><span class="p">()</span>
 </code></pre></div>
 
-<h3>查看连接状态</h3>
-<div class="highlight"><pre><span></span><code><span class="err">w3.isConnected()</span>
-</code></pre></div>
-
-<h2>provider: Infura</h2>
-<p>在实际生产环境中，要与 以太坊区块链 交互的<strong>最快</strong>的方式，是使用 <strong>远程节点</strong>，如：<a href="https://infura.io/">Infura</a>。你可以通过指定节点(当你创建了一个账户后，有Infura提供)与远程节点连接，如：</p>
-<h3>显示连接</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;https://mainnet.infura.io/v3/&lt;infura-project-id&gt;&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h3>隐式连接</h3>
-<p>先将你的Infura项目id设置为环境变量</p>
-<blockquote>
-<p>$ export WEB3_INFURA_PROJECT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto.infura</span> <span class="kn">import</span> <span class="n">w3</span>
-<span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">blockNumber</span>
-</code></pre></div>
-
-<h1>获取区块链信息</h1>
-<p>可以使用w3与以太坊区块链进行交互。
-web3可以帮助你：<br>
-- 读取块数据
-- 签署
-- 发送事务
-- 合约部署
-- 合约交互
-- 等等...</p>
-<p>使用<a href="https://web3py.readthedocs.io/en/stable/web3.eth.html#web3.eth.Eth">w3.eth</a>做很多事情  </p>
-<p>如果你想 进入合约/部署合约，请查看(https://web3py.readthedocs.io/en/stable/contracts.html#contracts)  </p>	
+<p>想要了解更多，参考 https://web3py.readthedocs.io/en/stable/filters.html#filtering</p>
+<ul>
+<li>web3.eth.filter()</li>
+<li>web3.eth.getFilterChanges()</li>
+<li>web3.eth.getFilterLogs()</li>
+<li>web3.eth.uninstallFilter()</li>
+<li>web3.eth.getLogs()</li>
+<li>Contract.events.your_event_name.createFilter()</li>
+<li>Contract.events.your_event_name.build_filter()</li>
+<li>Filter.get_new_entries()</li>
+<li>Filter.get_all_entries()</li>
+<li>Filter.format_entry()</li>
+<li>Filter.is_valid_entry()</li>
+</ul>
+<h1>Net API</h1>
+<p>一些基本的网络属性，可用web3.net查看
+- web3.net.listening
+- web3.net.peer_count
+- web3.net.version</p>
+<h1>ethPM</h1>
+<ul>
+<li>打包合同，以重复使用</li>
+<li>使用另一个受信任的注册表中的合同<br>
+想要了解更多，参考：https://web3py.readthedocs.io/en/stable/ethpm.html#ethpm  </li>
+</ul>
+<h1>ENS</h1>
+<p><a href="https://ens.domains/">Ethereum Name Service (ENS)</a> 提供了人类可读地址的结构。如：你可以把资金发送到ethereumfoundation.eth。web3支持ens，详细参考：https://web3py.readthedocs.io/en/stable/ens_overview.html#ens-overview  </p>	
 						</div>
 					</div>
 	
 			                <div class="post">
 			                        <h2 class="title">Autres articles</h2>
 			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="https://blog.pygod.vip/kuai-su-kai-shi.html">快速开始</a></h2>
+						<p class="meta"><span class="date">Le 2020-12-03 09:23:00</span><span class="posted">Par <a href="#">hanf</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <p>只是将web3py的<a href="https://web3py.readthedocs.io/en/stable/quickstart.html">官方文档</a> 做了一些翻译</p>	
+						 <a class="readmore" href="https://blog.pygod.vip/kuai-su-kai-shi.html">Lire la suite …</a>
+						</div>
+					</div>
         
  
 			                <div class="post summary">
