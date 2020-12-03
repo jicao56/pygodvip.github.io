@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>博客 - docker</title>
+    <title>web3py_intro_quickstart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="hanf">
@@ -79,7 +79,7 @@
 						<i class="icon-folder-open icon-large"></i>区块链
 					</a>
                   </li>
-                  <li >
+                  <li class="active">
                     <a href="https://blog.pygod.vip/category/web3py.html">
 						<i class="icon-folder-open icon-large"></i>web3py
 					</a>
@@ -104,28 +104,117 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/docker-ming-ling.html">Docker 命令</a></h1>
-                <div class="well small"><footer class="post-info">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to web3py_intro_quickstart">
+                                        web3py_intro_quickstart
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
 <span class="label">Date</span>
-<abbr class="published" title="2020-11-20T10:20:00+08:00">
-        <i class="icon-calendar"></i>2020-11-20 10:20:00
+<abbr class="published" title="2020-12-03T09:23:00+08:00">
+        <i class="icon-calendar"></i>2020-12-03 09:23:00
 </abbr>
 <span class="label">By</span>
 <a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
 <span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/docker.html"><i class="icon-folder-open"></i>Docker</a>.
+<a href="https://blog.pygod.vip/category/web3py.html"><i class="icon-folder-open"></i>web3py</a>.
 
 
 <span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/docker.html"><i class="icon-tag"></i>docker</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>docker命令介绍</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/docker-ming-ling.html">more ...</a>
-                </div>
-        </div>
-        <hr />
+	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
+	<a href="https://blog.pygod.vip/tag/web3.html"><i class="icon-tag"></i>web3</a>
+	<a href="https://blog.pygod.vip/tag/ethereum.html"><i class="icon-tag"></i>ethereum</a>
+</footer><!-- /.post-info -->                </div>
+                <h1>安装</h1>
+<p>使用pip命令安装：</p>
+<div class="highlight"><pre><span></span><code>$ pip install web3
+</code></pre></div>
 
+<h1>使用</h1>
+<p>该库依赖于以太坊节点的<strong>连接</strong>，如：本地开发的时候，启动的一个ganache-cli。 <br>
+我们称这些<strong>连接</strong>为<strong>providers</strong>，并且有很多方式可以去配置他们。具体参考(https://web3py.readthedocs.io/en/stable/providers.html#providers)  </p>
+<h2>provider: 本地Geth节点</h2>
+<h3>显示指定连接方式</h3>
+<p>显示的连接本地Geth节点有三种方式，分别如下  </p>
+<h4>IPC连接</h4>
+<p>最安全的</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">IPCProvider</span><span class="p">(</span><span class="s1">&#39;./path/to/geth.ipc&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h4>HTTP连接</h4>
+<p>端口8545</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h4>websocket连接</h4>
+<p>端口8546</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">WebsocketProvider</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:8546&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>隐式自动连接</h3>
+<p>如果你坚持使用 <strong>默认端口</strong> 或者 <strong>本地IPC文件</strong>，可以自动检测provider。参考：(https://web3py.readthedocs.io/en/stable/providers.html#automatic-provider)  </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto</span> <span class="kn">import</span> <span class="n">w3</span>
+</code></pre></div>
+
+<h3>查看连接状态</h3>
+<div class="highlight"><pre><span></span><code><span class="err">w3.isConnected()</span>
+</code></pre></div>
+
+<h2>provider: Infura</h2>
+<p>在实际生产环境中，要与 以太坊区块链 交互的<strong>最快</strong>的方式，是使用 <strong>远程节点</strong>，如：<a href="https://infura.io/">Infura</a>。你可以通过指定节点(当你创建了一个账户后，有Infura提供)与远程节点连接，如：</p>
+<h3>显示连接</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;https://mainnet.infura.io/v3/&lt;infura-project-id&gt;&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>隐式连接</h3>
+<p>先将你的Infura项目id设置为环境变量</p>
+<blockquote>
+<p>$ export WEB3_INFURA_PROJECT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto.infura</span> <span class="kn">import</span> <span class="n">w3</span>
+<span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">blockNumber</span>
+</code></pre></div>
+
+<h1>获取区块链信息</h1>
+<p>可以使用w3与以太坊区块链进行交互。
+web3可以帮助你：<br>
+- 读取块数据
+- 签署
+- 发送事务
+- 合约部署
+- 合约交互
+- 等等...</p>
+<p>使用<a href="https://web3py.readthedocs.io/en/stable/web3.eth.html#web3.eth.Eth">w3.eth</a>做很多事情  </p>
+<p>如果你想 进入合约/部署合约，请查看(https://web3py.readthedocs.io/en/stable/contracts.html#contracts)  </p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "web3py_intro_quickstart.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'https://disqus_ca3p2R4hDP.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">

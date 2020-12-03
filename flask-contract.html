@@ -74,6 +74,16 @@
 						<i class="icon-folder-open icon-large"></i>Pelican
 					</a>
                   </li>
+                  <li >
+                    <a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
+						<i class="icon-folder-open icon-large"></i>区块链
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://blog.pygod.vip/category/web3py.html">
+						<i class="icon-folder-open icon-large"></i>web3py
+					</a>
+                  </li>
                   <li class="active">
                     <a href="https://blog.pygod.vip/category/yu-fa.html">
 						<i class="icon-folder-open icon-large"></i>语法
@@ -351,8 +361,8 @@ solidity是用于编写以太坊智能合约的语言。</p>
 
 
 <span class="k">def</span> <span class="nf">deploy_contract</span><span class="p">(</span><span class="n">contract_interface</span><span class="p">):</span>
-    <span class="c1"># 初始化并且部署合约</span>
-    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bycode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
+    <span class="c1"># 根据byte和abi获取合约对象</span>
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
 
     <span class="c1"># 发布合约，获取交易hash</span>
     <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">transaction</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
@@ -402,7 +412,7 @@ solidity是用于编写以太坊智能合约的语言。</p>
 
 <span class="k">def</span> <span class="nf">deploy_contract</span><span class="p">(</span><span class="n">contract_interface</span><span class="p">):</span>
     <span class="c1"># 初始化并且部署合约</span>
-    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bycode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
 
     <span class="c1"># 发布合约，获取交易hash</span>
     <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">transaction</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
@@ -601,6 +611,16 @@ solidity是用于编写以太坊智能合约的语言。</p>
 <li>
 <a href="https://blog.pygod.vip/category/pelican.html">
     <i class="icon-folder-open icon-large"></i>Pelican
+</a>
+</li>
+<li>
+<a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
+    <i class="icon-folder-open icon-large"></i>区块链
+</a>
+</li>
+<li>
+<a href="https://blog.pygod.vip/category/web3py.html">
+    <i class="icon-folder-open icon-large"></i>web3py
 </a>
 </li>
 <li>
