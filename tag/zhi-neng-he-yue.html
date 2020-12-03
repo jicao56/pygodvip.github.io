@@ -1,253 +1,203 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>博客 - 智能合约</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="hanf">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="https://blog.pygod.vip/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="https://blog.pygod.vip/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="https://blog.pygod.vip/theme/css/font-awesome.css" rel="stylesheet">
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
 
-    <link href="https://blog.pygod.vip/theme/css/pygments.css" rel="stylesheet">
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>博客 - 智能合约</title>
+<link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="https://blog.pygod.vip/web3py_intro_quickstart.html">web3py_intro_quickstart</a></h2>
+						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/web3py.html">web3py</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a> / </span>
+<span><a href="https://blog.pygod.vip/tag/web3.html">web3</a> / </span>
+<span><a href="https://blog.pygod.vip/tag/ethereum.html">ethereum</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <h1>安装</h1>
+<p>使用pip命令安装：</p>
+<div class="highlight"><pre><span></span><code>$ pip install web3
+</code></pre></div>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<h1>使用</h1>
+<p>该库依赖于以太坊节点的<strong>连接</strong>，如：本地开发的时候，启动的一个ganache-cli。 <br>
+我们称这些<strong>连接</strong>为<strong>providers</strong>，并且有很多方式可以去配置他们。具体参考(https://web3py.readthedocs.io/en/stable/providers.html#providers)  </p>
+<h2>provider: 本地Geth节点</h2>
+<h3>显示指定连接方式</h3>
+<p>显示的连接本地Geth节点有三种方式，分别如下  </p>
+<h4>IPC连接</h4>
+<p>最安全的</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">IPCProvider</span><span class="p">(</span><span class="s1">&#39;./path/to/geth.ipc&#39;</span><span class="p">))</span>
+</code></pre></div>
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="https://blog.pygod.vip/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="https://blog.pygod.vip/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://blog.pygod.vip/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://blog.pygod.vip/theme/images/apple-touch-icon-114x114.png">
+<h4>HTTP连接</h4>
+<p>端口8545</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+</code></pre></div>
 
-    <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
+<h4>websocket连接</h4>
+<p>端口8546</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">WebsocketProvider</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:8546&#39;</span><span class="p">))</span>
+</code></pre></div>
 
-  </head>
+<h3>隐式自动连接</h3>
+<p>如果你坚持使用 <strong>默认端口</strong> 或者 <strong>本地IPC文件</strong>，可以自动检测provider。参考：(https://web3py.readthedocs.io/en/stable/providers.html#automatic-provider)  </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto</span> <span class="kn">import</span> <span class="n">w3</span>
+</code></pre></div>
 
-  <body>
+<h3>查看连接状态</h3>
+<div class="highlight"><pre><span></span><code><span class="err">w3.isConnected()</span>
+</code></pre></div>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="https://blog.pygod.vip/index.html">博客 </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/docker.html">
-						<i class="icon-folder-open icon-large"></i>Docker
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/pelican.html">
-						<i class="icon-folder-open icon-large"></i>Pelican
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
-						<i class="icon-folder-open icon-large"></i>区块链
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/web3py.html">
-						<i class="icon-folder-open icon-large"></i>web3py
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/yu-fa.html">
-						<i class="icon-folder-open icon-large"></i>语法
-					</a>
-                  </li>
+<h2>provider: Infura</h2>
+<p>在实际生产环境中，要与 以太坊区块链 交互的<strong>最快</strong>的方式，是使用 <strong>远程节点</strong>，如：<a href="https://infura.io/">Infura</a>。你可以通过指定节点(当你创建了一个账户后，有Infura提供)与远程节点连接，如：</p>
+<h3>显示连接</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;https://mainnet.infura.io/v3/&lt;infura-project-id&gt;&#39;</span><span class="p">))</span>
+</code></pre></div>
 
-                          <ul class="nav pull-right">
-                                <li><a href="https://blog.pygod.vip/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
+<h3>隐式连接</h3>
+<p>先将你的Infura项目id设置为环境变量</p>
+<blockquote>
+<p>$ export WEB3_INFURA_PROJECT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto.infura</span> <span class="kn">import</span> <span class="n">w3</span>
+<span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">blockNumber</span>
+</code></pre></div>
 
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+<h1>获取区块链信息</h1>
+<p>可以使用w3与以太坊区块链进行交互。
+web3可以帮助你：<br>
+- 读取块数据
+- 签署
+- 发送事务
+- 合约部署
+- 合约交互
+- 等等...</p>
+<p>使用<a href="https://web3py.readthedocs.io/en/stable/web3.eth.html#web3.eth.Eth">w3.eth</a>做很多事情  </p>
+<p>如果你想 进入合约/部署合约，请查看(https://web3py.readthedocs.io/en/stable/contracts.html#contracts)  </p>	
+						</div>
+					</div>
+	
+			                <div class="post">
+			                        <h2 class="title">Autres articles</h2>
+			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="https://blog.pygod.vip/flask-contract.html">flask contract</a></h2>
+						<p class="meta"><span class="date">Le 2020-11-23 16:15:00</span><span class="posted">Par <a href="#">hanf</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <p>利用python的flask框架开发智能合约</p>	
+						 <a class="readmore" href="https://blog.pygod.vip/flask-contract.html">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h2>
+						<p class="meta"><span class="date">Le 2020-11-21 11:10:00</span><span class="posted">Par <a href="#">hanf</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <p>编译部署智能合约，想看原汁原味的英文文档可移步至(https://kauri.io/#communities/Getting%20started%20with%20dapp%20development/understanding-smart-contract-compilation-and-depl)，本文做了一些简单翻译，且只针对ubuntu系统</p>	
+						 <a class="readmore" href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">Lire la suite …</a>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="https://blog.pygod.vip">博客</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="https://blog.pygod.vip">Home</a></li>
+							<li ><a href="https://blog.pygod.vip/archives.html">Archives</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>Catégories</h2>
+							<ul>
+								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/pelican.html">Pelican</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/qu-kuai-lian.html">区块链</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2>Blogroll</h2>
+							<ul>
+                                                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                                                            <li><a href="https://www.python.org/">Python.org</a></li>
+                                                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                                                            <li><a href="#">You can modify those links in your config file</a></li>
+							</ul>
+						</li>
+                                                <li>
+                                                        <h2>Social</h2>
+                                                        <ul>
+                                                            <li><a href="https://blog.pygod.vip/" rel="alternate">Flux Atom</a></li>
+                                                            <li><a href="#">You can add links in your config file</a></li>
+                                                            <li><a href="#">Another social link</a></li>
+                                                        </ul>
+                                                </li><!-- /.social -->
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/web3.html">web3</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/ethereum.html">ethereum</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/qu-kuai-lian.html">区块链</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/solidity.html">solidity</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/pelican.html">pelican</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/docker.html">docker</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/web3py_intro_quickstart.html">web3py_intro_quickstart</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-12-03T09:23:00+08:00">
-        <i class="icon-calendar"></i>2020-12-03 09:23:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/web3py.html"><i class="icon-folder-open"></i>web3py</a>.
-
-
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
-	<a href="https://blog.pygod.vip/tag/web3.html"><i class="icon-tag"></i>web3</a>
-	<a href="https://blog.pygod.vip/tag/ethereum.html"><i class="icon-tag"></i>ethereum</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>只是将web3py的<a href="https://web3py.readthedocs.io/en/stable/quickstart.html">官方文档</a> 做了一些翻译</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/web3py_intro_quickstart.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/flask-contract.html">flask contract</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-11-23T16:15:00+08:00">
-        <i class="icon-calendar"></i>2020-11-23 16:15:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
-
-
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
-	<a href="https://blog.pygod.vip/tag/solidity.html"><i class="icon-tag"></i>solidity</a>
-	<a href="https://blog.pygod.vip/tag/ethereum.html"><i class="icon-tag"></i>ethereum</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>利用python的flask框架开发智能合约</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/flask-contract.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-11-21T11:10:00+08:00">
-        <i class="icon-calendar"></i>2020-11-21 11:10:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
-
-
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
-	<a href="https://blog.pygod.vip/tag/solidity.html"><i class="icon-tag"></i>solidity</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>编译部署智能合约，想看原汁原味的英文文档可移步至(https://kauri.io/#communities/Getting%20started%20with%20dapp%20development/understanding-smart-contract-compilation-and-depl)，本文做了一些简单翻译，且只针对ubuntu系统</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-
-        </div><!--/span-->
-
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
-    <li><a href="https://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
-    <li><a href="https://www.python.org/"><i class="icon-external-link"></i>Python.org</a></li>
-    <li><a href="https://palletsprojects.com/p/jinja/"><i class="icon-external-link"></i>Jinja2</a></li>
-    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
-<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
-    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
-
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="https://blog.pygod.vip/category/docker.html">
-    <i class="icon-folder-open icon-large"></i>Docker
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/pelican.html">
-    <i class="icon-folder-open icon-large"></i>Pelican
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
-    <i class="icon-folder-open icon-large"></i>区块链
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/web3py.html">
-    <i class="icon-folder-open icon-large"></i>web3py
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/yu-fa.html">
-    <i class="icon-folder-open icon-large"></i>语法
-</a>
-</li>
-
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
-
-
-</ul>        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
-
-        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'disqus_ca3p2R4hDP';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://blog.pygod.vip/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="https://blog.pygod.vip/theme/js/bootstrap.min.js"></script>
-  </body>
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+</p>
+</div>
+<!-- end #footer -->
+</body>
 </html>

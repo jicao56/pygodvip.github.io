@@ -1,251 +1,577 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>博客 - 语法</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="hanf">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="https://blog.pygod.vip/theme/css/bootstrap.min.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="https://blog.pygod.vip/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="https://blog.pygod.vip/theme/css/font-awesome.css" rel="stylesheet">
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
 
-    <link href="https://blog.pygod.vip/theme/css/pygments.css" rel="stylesheet">
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>博客 - 语法</title>
+<link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="https://blog.pygod.vip/flask-contract.html">flask contract</a></h2>
+						<p class="meta"><span class="date">Le  </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a> / </span>
+<span><a href="https://blog.pygod.vip/tag/solidity.html">solidity</a> / </span>
+<span><a href="https://blog.pygod.vip/tag/ethereum.html">ethereum</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <h1>1 简介</h1>
+<p>开发智能合约的框架有很多，比如：  </p>
+<blockquote>
+<ul>
+<li><a href="https://truffleframework.com">truffle</a></li>
+<li><a href="https://embark.status.im">embark</a> </li>
+<li><a href="https://github.com/ethereum/populus">populous</a></li>
+</ul>
+</blockquote>
+<p>但我是一个pythoner，显然上述都不合适</p>
+<h1>2 环境</h1>
+<h2>python版本</h2>
+<p>3.6</p>
+<h2>2.1 安装软件</h2>
+<h3>2.1.1. 安装python虚拟环境</h3>
+<blockquote>
+<h4>安装pip3</h4>
+<p>sudo apt install python3-pip</p>
+<h4>2.1.1.1 安装virtualenvwrapper</h4>
+<p>pip3 install virtualenvwrapper</p>
+<h4>2.1.1.2 配置虚拟环境</h4>
+<ul>
+<li>创建虚拟环境目录，在$HOME下创建.virtualenvs目录</li>
+<li>查找 virtualenvwrapper.sh 文件和 virtualenv 文件在哪个目录</li>
+<li>编辑$HOME/.bashrc文件，写入以下内容
+<code>export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh</code></li>
+</ul>
+<h4>2.1.1.3 创建虚拟环境</h4>
+<h4>2.1.1.4 进入虚拟环境</h4>
+</blockquote>
+<h3>2.2 安装ganache-cli</h3>
+<div class="highlight"><pre><span></span><code><span class="err">npm install -g ganache-cli</span>
+</code></pre></div>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<p>ganache是以太坊的本地测试链</p>
+<h3>2.3 安装web3</h3>
+<div class="highlight"><pre><span></span><code><span class="err">pip install web</span>
+</code></pre></div>
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="https://blog.pygod.vip/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="https://blog.pygod.vip/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://blog.pygod.vip/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://blog.pygod.vip/theme/images/apple-touch-icon-114x114.png">
+<p>web3是一个用于和以太坊交互的python库。</p>
+<h3>2.4 安装flask</h3>
+<div class="highlight"><pre><span></span><code><span class="err">pip install flask</span>
+</code></pre></div>
 
-    <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
+<h3>2.5 安装flask-restful</h3>
+<div class="highlight"><pre><span></span><code><span class="err">pip install flask-restful</span>
+</code></pre></div>
 
-  </head>
+<p>flask的插件，可快速构建restful风格的api</p>
+<h3>2.6 安装flask-marshmallow</h3>
+<div class="highlight"><pre><span></span><code><span class="err">pip install flask-marshmallow</span>
+</code></pre></div>
 
-  <body>
+<p>flask的插件，用于序列化/反序列化</p>
+<h3>2.7 安装solc的python包</h3>
+<div class="highlight"><pre><span></span><code><span class="err">pip install py-solc</span>
+</code></pre></div>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="https://blog.pygod.vip/index.html">博客 </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/docker.html">
-						<i class="icon-folder-open icon-large"></i>Docker
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/pelican.html">
-						<i class="icon-folder-open icon-large"></i>Pelican
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
-						<i class="icon-folder-open icon-large"></i>区块链
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://blog.pygod.vip/category/web3py.html">
-						<i class="icon-folder-open icon-large"></i>web3py
-					</a>
-                  </li>
-                  <li class="active">
-                    <a href="https://blog.pygod.vip/category/yu-fa.html">
-						<i class="icon-folder-open icon-large"></i>语法
-					</a>
-                  </li>
+<h1>3 启动以太坊测试链</h1>
+<div class="highlight"><pre><span></span><code><span class="err">ganache-cli</span>
+</code></pre></div>
 
-                          <ul class="nav pull-right">
-                                <li><a href="https://blog.pygod.vip/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
+<p>启动一个区块链，用于测试智能合约的发布</p>
+<h1>4 创建user.sol文件</h1>
+<p>使用solidity编写智能合约。
+solidity是用于编写以太坊智能合约的语言。</p>
+<p>例如：</p>
+<blockquote>
+<p>如果要在区块链上进行“出勤登记”，你需要一个user对象数组。
+它包含：<br>
+1. 访问用户的getter方法；
+2. 设置用户的setter方法；
+3. 验证用户是否需要登记出勤（因为每个用户每天只能出勤一次，后续触达时，需要判断一下是否需要登记出勤）</p>
+</blockquote>
+<h2>4.1 声明solidity编译器的版本</h2>
+<blockquote>
+<ol>
+<li>先查看本地的solidity版本是多少<br>
+<code>$ solc --version</code></li>
+<li>在代码中声明编译器的版本
+<code>pragma solidity ^0.4.21</code></li>
+</ol>
+</blockquote>
+<p><strong>0.4.21是solidity的版本号</strong></p>
+<h2>4.2 导入字符串处理库</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="s2">&quot;stringUtils.sol&quot;</span>
+</code></pre></div>
 
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+<h2>4.3 为user定义合约</h2>
+<div class="highlight"><pre><span></span><code><span class="err">contract userRecords {}</span>
+</code></pre></div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/flask-contract.html">flask contract</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-11-23T16:15:00+08:00">
-        <i class="icon-calendar"></i>2020-11-23 16:15:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
+<h2>4.4 初始化</h2>
+<p>为了存储user的name和gender信息，用enum类型定义性别类型，用struct定义用户</p>
+<div class="highlight"><pre><span></span><code><span class="o">//</span> <span class="err">定义枚举类型的变量，用于存储用户性别</span>
+<span class="n">enum</span> <span class="n">genderType</span> <span class="err">{</span> <span class="n">male</span><span class="p">,</span> <span class="n">female</span> <span class="err">}</span>
 
+<span class="o">//</span> <span class="err">储存在以太坊合约中的实际用户对象</span>
+<span class="n">struct</span> <span class="k">user</span> <span class="err">{</span>
+    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">genderType</span> <span class="n">gender</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div>
 
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
-	<a href="https://blog.pygod.vip/tag/solidity.html"><i class="icon-tag"></i>solidity</a>
-	<a href="https://blog.pygod.vip/tag/ethereum.html"><i class="icon-tag"></i>ethereum</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>利用python的flask框架开发智能合约</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/flask-contract.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-11-21T11:10:00+08:00">
-        <i class="icon-calendar"></i>2020-11-21 11:10:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
+<h2>4.5 声明用户对象</h2>
+<div class="highlight"><pre><span></span><code><span class="err">user user_obj;</span>
+</code></pre></div>
 
+<h2>4.6 添加getter，setter方法</h2>
+<p>我们需要在区块链上保存每个用户的信息。<br>
+将上述方法设置为public（因为要从外部访问）</p>
+<div class="highlight"><pre><span></span><code><span class="err">// 设置用户的公共方法</span>
+<span class="err">function setUser(string name, string gender) public {</span>
+<span class="err">    genderType gender_type = getGenderFromString(gender);</span>
+<span class="err">    user_obj = user({name:name, gender: gender_type});</span>
+<span class="err">}</span>
+<span class="err">// 获取用户的公共方法</span>
+<span class="err">function getUser() public returns (string, string) { </span>
+<span class="err">    return (user_obj.name, getGenderToString(user_obj.gender));</span>
+<span class="err">}</span>
+</code></pre></div>
 
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html"><i class="icon-tag"></i>智能合约</a>
-	<a href="https://blog.pygod.vip/tag/solidity.html"><i class="icon-tag"></i>solidity</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>编译部署智能合约，想看原汁原味的英文文档可移步至(https://kauri.io/#communities/Getting%20started%20with%20dapp%20development/understanding-smart-contract-compilation-and-depl)，本文做了一些简单翻译，且只针对ubuntu系统</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://blog.pygod.vip/markdownyu-fa.html">markdown语法</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2020-11-21T11:10:00+08:00">
-        <i class="icon-calendar"></i>2020-11-21 11:10:00
-</abbr>
-<span class="label">By</span>
-<a href="https://blog.pygod.vip/author/hanf.html"><i class="icon-user"></i>hanf</a>
-<span class="label">Category</span>
-<a href="https://blog.pygod.vip/category/yu-fa.html"><i class="icon-folder-open"></i>语法</a>.
+<h2>4.7 添加getGenderFromString方法和getGenderToString方法</h2>
+<div class="highlight"><pre><span></span><code><span class="err">// 将 字符串 转换为 genderType的枚举类型</span>
+<span class="err">function getGenderFromString(string gender) internal returns(genderType) {</span>
+<span class="err">    if(StringUtils.equal(gender, &quot;male&quot;)) {</span>
+<span class="err">        return genderType.male;</span>
+<span class="err">    } else {</span>
+<span class="err">        return genderType.female;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
+<span class="err">// 将 genderType的枚举类型 转换为 字符串</span>
+<span class="err">function getGenderToString(genderType gender) internal returns (string) {</span>
+<span class="err">    if(gender == genderType.male) {</span>
+<span class="err">        return &quot;male&quot;;</span>
+<span class="err">    } else {</span>
+<span class="err">        return &quot;female&quot;;</span>
+<span class="err">    }</span>
+<span class="err">}</span>
+</code></pre></div>
 
+<h2>4.8 完整示例</h2>
+<div class="highlight"><pre><span></span><code><span class="n">pragma</span> <span class="n">solidity</span> <span class="o">^</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">4</span><span class="p">;</span>
 
-<span class="label">Tags</span>
-	<a href="https://blog.pygod.vip/tag/markdown.html"><i class="icon-tag"></i>markdown</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>markdown语法介绍</p>
-                        <a class="btn primary xsmall" href="https://blog.pygod.vip/markdownyu-fa.html">more ...</a>
-                </div>
-        </div>
-        <hr />
+<span class="o">//</span> <span class="err">导入字符串处理库</span>
+<span class="kn">import</span> <span class="s2">&quot;stringUtils.sol&quot;</span><span class="p">;</span>
 
-        </div><!--/span-->
+<span class="o">//</span> <span class="err">为</span><span class="n">user定义合约</span>
+<span class="n">contract</span> <span class="n">userRecords</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="err">定义枚举类型的变量，用于存储用户性别</span>
+  <span class="n">enum</span> <span class="n">genderType</span> <span class="p">{</span> <span class="n">male</span><span class="p">,</span> <span class="n">female</span> <span class="p">};</span>
+  <span class="o">//</span> <span class="err">储存在以太坊合约中的实际用户对象</span>
+  <span class="n">struct</span> <span class="n">user</span><span class="p">{</span>
+    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="n">genderType</span> <span class="n">gender</span><span class="p">;</span>
+  <span class="p">}</span>
 
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
-    <li><a href="https://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
-    <li><a href="https://www.python.org/"><i class="icon-external-link"></i>Python.org</a></li>
-    <li><a href="https://palletsprojects.com/p/jinja/"><i class="icon-external-link"></i>Jinja2</a></li>
-    <li><a href="#"><i class="icon-external-link"></i>You can modify those links in your config file</a></li>
-<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
-    <li><a href="#"><i class="icon-You can add links in your config file-sign icon-large"></i>You can add links in your config file</a></li>
-    <li><a href="#"><i class="icon-Another social link-sign icon-large"></i>Another social link</a></li>
+  <span class="o">//</span> <span class="err">定义枚举类型的变量，用于存储用户性别</span>
+    <span class="n">enum</span> <span class="n">genderType</span> <span class="p">{</span> <span class="n">male</span><span class="p">,</span> <span class="n">female</span> <span class="p">}</span>
 
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="https://blog.pygod.vip/category/docker.html">
-    <i class="icon-folder-open icon-large"></i>Docker
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/pelican.html">
-    <i class="icon-folder-open icon-large"></i>Pelican
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/qu-kuai-lian.html">
-    <i class="icon-folder-open icon-large"></i>区块链
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/web3py.html">
-    <i class="icon-folder-open icon-large"></i>web3py
-</a>
-</li>
-<li>
-<a href="https://blog.pygod.vip/category/yu-fa.html">
-    <i class="icon-folder-open icon-large"></i>语法
-</a>
-</li>
+    <span class="o">//</span> <span class="err">储存在以太坊合约中的实际用户对象</span>
+    <span class="n">struct</span> <span class="n">user</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">genderType</span> <span class="n">gender</span><span class="p">;</span>
+    <span class="p">}</span>
 
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+  <span class="n">user</span> <span class="n">user_obj</span><span class="p">;</span>
 
+  <span class="o">//</span> <span class="err">将</span> <span class="err">字符串</span> <span class="err">转换为</span> <span class="n">genderType的枚举类型</span>
+  <span class="n">function</span> <span class="n">getGenderFromString</span><span class="p">(</span><span class="n">string</span> <span class="n">gender</span><span class="p">)</span> <span class="n">internal</span> <span class="n">returns</span><span class="p">(</span><span class="n">genderType</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">gender</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">genderType</span><span class="o">.</span><span class="n">male</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">genderType</span><span class="o">.</span><span class="n">female</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="o">//</span> <span class="err">将</span> <span class="n">genderType的枚举类型</span> <span class="err">转换为</span> <span class="err">字符串</span>
+  <span class="n">function</span> <span class="n">getGenderToString</span><span class="p">(</span><span class="n">genderType</span> <span class="n">gender</span><span class="p">)</span> <span class="n">internal</span> <span class="n">returns</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">gender</span> <span class="o">==</span> <span class="n">genderType</span><span class="o">.</span><span class="n">male</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;male&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;female&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-</ul>        </div><!--/.well -->
+  <span class="o">//</span> <span class="nb">set</span> <span class="n">user</span> <span class="n">public</span> <span class="n">function</span>
+  <span class="o">//</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">persisting</span> <span class="nb">object</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span>
+  <span class="n">function</span> <span class="n">setUser</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="n">string</span> <span class="n">gender</span><span class="p">)</span> <span class="n">public</span> <span class="p">{</span>
+    <span class="n">genderType</span> <span class="n">gender_type</span> <span class="o">=</span> <span class="n">getGenderFromString</span><span class="p">(</span><span class="n">gender</span><span class="p">);</span>
+    <span class="n">user_obj</span> <span class="o">=</span> <span class="n">user</span><span class="p">({</span><span class="n">name</span><span class="p">:</span><span class="n">name</span><span class="p">,</span> <span class="n">gender</span><span class="p">:</span> <span class="n">gender_type</span><span class="p">});</span>
+  <span class="p">}</span>
 
-      </div><!--/row-->
+  <span class="o">//</span> <span class="n">get</span> <span class="n">user</span> <span class="n">public</span> <span class="n">function</span>
+  <span class="o">//</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">getting</span> <span class="nb">object</span> <span class="kn">from</span> <span class="nn">db.</span>
+  <span class="n">function</span> <span class="n">getUser</span><span class="p">()</span> <span class="n">public</span> <span class="n">returns</span> <span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">user_obj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">getGenderToString</span><span class="p">(</span><span class="n">user_obj</span><span class="o">.</span><span class="n">gender</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
-      <hr>
+<h1>5 使用python库进行编译/部署</h1>
+<h2>5.1 实例化web3对象</h2>
+<p>web3对象用于和合约做交互，如，通过abi和contract_address获取合约中的user对象</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="c1"># web3.py instance</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:8545&quot;</span><span class="p">))</span>
+</code></pre></div>
 
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
+<h2>5.2 使用python的solc编译器模块包，编译solidity代码</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">solc</span> <span class="kn">import</span> <span class="n">compile_files</span>
+<span class="c1"># 编译所有的合约文件</span>
+<span class="n">contracts</span> <span class="o">=</span> <span class="n">compile_files</span><span class="p">([</span><span class="s1">&#39;user.sol&#39;</span><span class="p">,</span> <span class="s1">&#39;stringUtils.sol&#39;</span><span class="p">])</span>
+<span class="c1"># 分离 主文件 和 链接文件 的合约</span>
+<span class="n">main_contract</span> <span class="o">=</span> <span class="n">contracts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;user.sol:userRecords&quot;</span><span class="p">)</span>
+<span class="n">library_link</span> <span class="o">=</span> <span class="n">contracts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;stringUtils.sol:StringUtils&quot;</span><span class="p">)</span>
+</code></pre></div>
 
-        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
+<h2>5.3 连接 主文件合约 和 外链合约</h2>
+<p>编译主文件合约时，需要将 <strong>外链合约的部署地址</strong> 与 <strong>主文件合约</strong> 链接起来。<br>
+所以，先通过编译部署所有链接， 我们应该在签订合同之前部署库地址来替换这个部分</p>
+<h2>将主文件合约和外链库地址连接起来</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">solc</span> <span class="kn">import</span> <span class="n">link_code</span>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'disqus_ca3p2R4hDP';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
+<span class="k">def</span> <span class="nf">deploy_contract</span><span class="p">(</span><span class="n">contract_interface</span><span class="p">):</span>
+    <span class="c1"># 根据byte和abi获取合约对象</span>
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
 
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://blog.pygod.vip/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="https://blog.pygod.vip/theme/js/bootstrap.min.js"></script>
-  </body>
+    <span class="c1"># 发布合约，获取交易hash</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">transaction</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+
+    <span class="c1"># 获取hash收据，用于获取合同地址</span>
+    <span class="n">tx_receipt</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">getTransactionReceipt</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tx_receipt</span><span class="p">[</span><span class="s1">&#39;contractAddress&#39;</span><span class="p">]</span>
+
+
+<span class="n">library_address</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;stringUtils.sol:StringUtils&#39;</span><span class="p">:</span> <span class="n">deploy_contract</span><span class="p">(</span><span class="n">library_link</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">main_contract</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_code</span><span class="p">(</span><span class="n">main_contract</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">],</span> <span class="n">library_address</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>执行上述python代码，会发现地址已经连接起来了</strong></p>
+<h2>5.4 利用w3部署合约</h2>
+<div class="highlight"><pre><span></span><code><span class="err">contract_address = deploy_contract(main_contract)</span>
+</code></pre></div>
+
+<p><strong>以上，一个智能合约就部署成功了。但我们需要在abi中触发合约，所以需要将这些信息保存起来</strong>  </p>
+<h2>5.5 将编译后的内容写入文件compile.json</h2>
+<div class="highlight"><pre><span></span><code><span class="err">with open(&#39;compile.json&#39;, &#39;w&#39;) as outfile:</span>
+<span class="err">    data = {</span>
+<span class="err">        &#39;abi&#39;: main_contract[&#39;abi&#39;]</span>
+<span class="err">        &#39;contract_address&#39;: deploy_contract(main_contract)</span>
+<span class="err">    }</span>
+<span class="err">    json.dump(data, outfile, indent=4, sort_keys=True)</span>
+</code></pre></div>
+
+<h2>5.6 完整示例</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<span class="kn">from</span> <span class="nn">solc</span> <span class="kn">import</span> <span class="n">compile_files</span>
+<span class="kn">from</span> <span class="nn">solc</span> <span class="kn">import</span> <span class="n">link_code</span>
+
+
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+
+<span class="c1"># 编译所有合约文件</span>
+<span class="n">contracts</span> <span class="o">=</span> <span class="n">compile_files</span><span class="p">([</span><span class="s1">&#39;user.sol&#39;</span><span class="p">,</span> <span class="s1">&#39;stringUtils.sol&#39;</span><span class="p">])</span>
+
+<span class="c1"># 分离 主文件 和 外链文件</span>
+<span class="n">main_contract</span> <span class="o">=</span> <span class="n">contracts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;user.sol:userRecords&#39;</span><span class="p">)</span>
+<span class="n">library_link</span> <span class="o">=</span> <span class="n">contracts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;stringUtils&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">deploy_contract</span><span class="p">(</span><span class="n">contract_interface</span><span class="p">):</span>
+    <span class="c1"># 初始化并且部署合约</span>
+    <span class="n">contract</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">],</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">contract_interface</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">])</span>
+
+    <span class="c1"># 发布合约，获取交易hash</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">(</span><span class="n">transaction</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;from&#39;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+
+    <span class="c1"># 获取hash收据，用于获取合同地址</span>
+    <span class="n">tx_receipt</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">getTransactionReceipt</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tx_receipt</span><span class="p">[</span><span class="s1">&#39;contractAddress&#39;</span><span class="p">]</span>
+
+
+<span class="n">library_address</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;stringUtils.sol:StringUtils&#39;</span><span class="p">:</span> <span class="n">deploy_contract</span><span class="p">(</span><span class="n">library_link</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">main_contract</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_code</span><span class="p">(</span><span class="n">main_contract</span><span class="p">[</span><span class="s1">&#39;bin&#39;</span><span class="p">],</span> <span class="n">library_address</span><span class="p">)</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;compile.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;abi&#39;</span><span class="p">:</span> <span class="n">main_contract</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">]</span>
+        <span class="s1">&#39;contract_address&#39;</span><span class="p">:</span> <span class="n">deploy_contract</span><span class="p">(</span><span class="n">main_contract</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>6 FlaskAPI</h1>
+<p>合约部署成功了（仅部署一次即可），然后可以通过flaskapi来做数据 <strong>“存”，“取”</strong> 操作。  </p>
+<h1>6.1 创建post方式的api来获取用户信息</h1>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">def</span> <span class="nf">check_gender</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">valid_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Invalid gender. Valid choices are&#39;</span> <span class="o">+</span> <span class="n">valid_list</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UserSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gender</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">check_gender</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/blockchain/user&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">user</span><span class="p">():</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">err</span><span class="p">),</span> <span class="mi">422</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">res</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>
+
+<h2>6.2 初始化web3</h2>
+<p>web3用于与智能合约进行通信  </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
+</code></pre></div>
+
+<h2>6.3 获取abi和合约地址</h2>
+<p>之前编译的时候，已经将abi和合约地址存入compile.json文件中了，这里从该json文件中获取</p>
+<div class="highlight"><pre><span></span><code><span class="err">with open(&#39;compile.json&#39;, &#39;r&#39;) as f:</span>
+<span class="err">    datastore = json.load(f)</span>
+<span class="err">    abi = datastore[&#39;abi&#39;]</span>
+<span class="err">    contract_address = datastore[&#39;contract_address&#39;]</span>
+</code></pre></div>
+
+<h2>6.4 设置默认账号</h2>
+<p>设置好默认账号后，以后每次设置合约中的user，都会消耗默认账号中的gas  </p>
+<div class="highlight"><pre><span></span><code><span class="err">w3.eth.defaultAccount = w3.eth.accounts[1]</span>
+</code></pre></div>
+
+<h2>6.5 通过flaskapi来设置智能合约中的用户信息</h2>
+<div class="highlight"><pre><span></span><code><span class="nv">@app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/blockchain/user&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">methods</span><span class="o">=[</span><span class="n">&#39;POST&#39;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+<span class="n">def</span><span class="w"> </span><span class="k">user</span><span class="p">()</span><span class="err">:</span><span class="w"></span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">创建合约实例</span><span class="w"></span>
+<span class="w">    </span><span class="k">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">contract</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">contract_address</span><span class="p">,</span><span class="w"> </span><span class="n">abi</span><span class="o">=</span><span class="n">abi</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">从http的request对象中获取数据</span><span class="w"></span>
+<span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UserSchema</span><span class="p">().</span><span class="k">load</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nl">err</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">jsonify</span><span class="p">(</span><span class="n">err</span><span class="p">),</span><span class="w"> </span><span class="mi">422</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">设置用户信息</span><span class="w"></span>
+<span class="w">    </span><span class="n">tx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">functions</span><span class="p">.</span><span class="k">setUser</span><span class="p">(</span><span class="n">res</span><span class="o">[</span><span class="n">&#39;name&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">[</span><span class="n">&#39;gender&#39;</span><span class="o">]</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">tx_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx_hash</span><span class="p">.</span><span class="n">transact</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">等待交易被打包</span><span class="w"></span>
+<span class="w">    </span><span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">waitForTransactionReceipt</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">获取修改后的用户信息</span><span class="w"></span>
+<span class="w">    </span><span class="n">user_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">functions</span><span class="p">.</span><span class="n">getUser</span><span class="p">().</span><span class="k">call</span><span class="p">()</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">jsonify</span><span class="p">(</span><span class="err">{</span><span class="s1">&#39;data&#39;</span><span class="err">:</span><span class="w"> </span><span class="n">user_data</span><span class="err">}</span><span class="p">),</span><span class="w"> </span><span class="mi">200</span><span class="w"></span>
+</code></pre></div>
+
+<h2>6.6 完整示例</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+
+
+<span class="c1"># 获取web3实例</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s2">&quot;http://127.0.0.1:8545&quot;</span><span class="p">))</span>
+<span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">defaultAccount</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">accounts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 从已经编译后，生成的json文件中获取abi和合约地址</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;compile.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">datastore</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">abi</span> <span class="o">=</span> <span class="n">datastore</span><span class="p">[</span><span class="s1">&#39;abi&#39;</span><span class="p">]</span>
+    <span class="n">contract_address</span> <span class="o">=</span> <span class="n">datastore</span><span class="p">[</span><span class="s1">&#39;contract_address&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># 检测性别合法性</span>
+<span class="k">def</span> <span class="nf">check_gender</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">valid_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Invalid gender. Valid choices are&#39;</span> <span class="o">+</span> <span class="n">valid_list</span><span class="p">)</span>
+
+
+<span class="c1"># 定义合约中的user模型</span>
+<span class="k">class</span> <span class="nc">UserSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gender</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">check_gender</span><span class="p">)</span>
+
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/blockchain/user&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">user</span><span class="p">():</span>
+    <span class="c1"># 通过abi和合约地址获取合约对象</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">contract</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">contract_address</span><span class="p">,</span> <span class="n">abi</span><span class="o">=</span><span class="n">abi</span><span class="p">)</span>
+
+    <span class="c1"># 从http的request对象中获取数据</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">UserSchema</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">err</span><span class="p">),</span> <span class="mi">422</span>
+
+    <span class="c1"># 通过合约对象可以调用合约中的任何public方法</span>
+    <span class="c1"># 调用serUser方法，修改user内容</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">setUser</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">])</span>
+
+    <span class="c1"># 通过transact使用户信息public。即用户信息上链</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">tx_hash</span><span class="o">.</span><span class="n">transact</span><span class="p">()</span>
+
+    <span class="c1"># 等待交易被打包</span>
+    <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">waitForTransactionReceipt</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span>
+
+    <span class="c1"># 通过call方法获取修改后的用户信息</span>
+    <span class="n">user_data</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">getUser</span><span class="p">()</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">user_data</span><span class="p">}),</span> <span class="mi">200</span>
+</code></pre></div>	
+						</div>
+					</div>
+	
+			                <div class="post">
+			                        <h2 class="title">Autres articles</h2>
+			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">编译/部署智能合约</a></h2>
+						<p class="meta"><span class="date">Le 2020-11-21 11:10:00</span><span class="posted">Par <a href="#">hanf</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <p>编译部署智能合约，想看原汁原味的英文文档可移步至(https://kauri.io/#communities/Getting%20started%20with%20dapp%20development/understanding-smart-contract-compilation-and-depl)，本文做了一些简单翻译，且只针对ubuntu系统</p>	
+						 <a class="readmore" href="https://blog.pygod.vip/bian-yi-bu-shu-zhi-neng-he-yue.html">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="https://blog.pygod.vip/markdownyu-fa.html">markdown语法</a></h2>
+						<p class="meta"><span class="date">Le 2020-11-21 11:10:00</span><span class="posted">Par <a href="#">hanf</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <p>markdown语法介绍</p>	
+						 <a class="readmore" href="https://blog.pygod.vip/markdownyu-fa.html">Lire la suite …</a>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="https://blog.pygod.vip">博客</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="https://blog.pygod.vip">Home</a></li>
+							<li ><a href="https://blog.pygod.vip/archives.html">Archives</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>Catégories</h2>
+							<ul>
+								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/pelican.html">Pelican</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/qu-kuai-lian.html">区块链</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
+								 <li class="active"><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2>Blogroll</h2>
+							<ul>
+                                                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                                                            <li><a href="https://www.python.org/">Python.org</a></li>
+                                                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                                                            <li><a href="#">You can modify those links in your config file</a></li>
+							</ul>
+						</li>
+                                                <li>
+                                                        <h2>Social</h2>
+                                                        <ul>
+                                                            <li><a href="https://blog.pygod.vip/" rel="alternate">Flux Atom</a></li>
+                                                            <li><a href="#">You can add links in your config file</a></li>
+                                                            <li><a href="#">Another social link</a></li>
+                                                        </ul>
+                                                </li><!-- /.social -->
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/web3.html">web3</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/ethereum.html">ethereum</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/qu-kuai-lian.html">区块链</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/solidity.html">solidity</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/pelican.html">pelican</a></li>
+                                                                <li><a href="https://blog.pygod.vip/tag/docker.html">docker</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+</p>
+</div>
+<!-- end #footer -->
+</body>
 </html>
