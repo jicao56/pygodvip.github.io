@@ -40,9 +40,9 @@ Released   : 20100928
 <p>通过pip安装完web3后，除了默认值之外，你还需要指定provider和一些中间件。  </p>
 <h2>providers</h2>
 <p>providers是web3连接区块链的方式。web3库有以下内置几个providers：
-- web3.IPCProvider：用于连接基于<strong>ipc套接字</strong>的 JSON-RPC 服务器
-- web3.HTTPProvider：用于连接基于<strong>http和https</strong>的 JSON-RPC 服务器
-- web3.WebsockerProvider：用于连接基于<strong>ws和wss的websocker</strong>的 JSON-RPC服务器</p>
+* web3.IPCProvider：用于连接基于<strong>ipc套接字</strong>的 JSON-RPC 服务器
+* web3.HTTPProvider：用于连接基于<strong>http和https</strong>的 JSON-RPC 服务器
+* web3.WebsockerProvider：用于连接基于<strong>ws和wss的websocker</strong>的 JSON-RPC服务器</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
 
 <span class="c1"># IPCProvider:</span>
@@ -101,38 +101,38 @@ Released   : 20100928
 <p>与以太坊交互的最常用的api可以在web3.eth命名空间下找到。<a href="https://web3py.readthedocs.io/en/stable/examples.html#examples">完整示例参考</a>  </p>
 <h2>获取数据</h2>
 <p>查看帐户余额(getBalance)、事务(getTransaction)和块数据(getBlock)是Web3.py中最常见的起点。<br>
-- web3.eth.getBalance()
-- web3.eth.getBlock()
-- web3.eth.getBlockTransactionCount()
-- web3.eth.getCode()
-- web3.eth.getProof()
-- web3.eth.getStorageAt()
-- web3.eth.getTransaction()
-- web3.eth.getTransactionByBlock()
-- web3.eth.getTransactionCount()
-- web3.eth.getUncleByBlock()
-- web3.eth.getUncleCount()</p>
+* web3.eth.getBalance()
+* web3.eth.getBlock()
+* web3.eth.getBlockTransactionCount()
+* web3.eth.getCode()
+* web3.eth.getProof()
+* web3.eth.getStorageAt()
+* web3.eth.getTransaction()
+* web3.eth.getTransactionByBlock()
+* web3.eth.getTransactionCount()
+* web3.eth.getUncleByBlock()
+* web3.eth.getUncleCount()</p>
 <h2>执行交易</h2>
 <p>最常用的有 <strong>sendTransaction</strong> 或者 <strong>signTransaction 和 sendRawTransaction 的组合</strong>。<br>
 如果与智能合约进行交互，则存在专用的API。<a href="https://web3py.readthedocs.io/en/stable/overview.html#overview-contracts">参考</a><br>
-- web3.eth.sendTransaction()
-- web3.eth.signTransaction()
-- web3.eth.sendRawTransaction()
-- web3.eth.replaceTransaction()
-- web3.eth.modifyTransaction()
-- web3.eth.waitForTransactionReceipt()
-- web3.eth.getTransactionReceipt()
-- web3.eth.sign()
-- web3.eth.signTypedData()
-- web3.eth.estimateGas()
-- web3.eth.generateGasPrice()
-- web3.eth.setGasPriceStrategy()</p>
+* web3.eth.sendTransaction()
+* web3.eth.signTransaction()
+* web3.eth.sendRawTransaction()
+* web3.eth.replaceTransaction()
+* web3.eth.modifyTransaction()
+* web3.eth.waitForTransactionReceipt()
+* web3.eth.getTransactionReceipt()
+* web3.eth.sign()
+* web3.eth.signTypedData()
+* web3.eth.estimateGas()
+* web3.eth.generateGasPrice()
+* web3.eth.setGasPriceStrategy()</p>
 <h2>合约</h2>
 <p>合约最常用是：在已部署的合约上<strong>部署</strong>和<strong>执行功能</strong>。<br>
 部署合约需要先编译，这个编译不一定要在本地完成，可以使用:
-- 本地solidity编译器，如：本地安装solc编译器（apt install solc）
-- 在线编辑器<a href="http://remix.ethereum.org/">Remix</a>
-- 开发框架，如<a href="https://eth-brownie.readthedocs.io/en/stable/">Brownie</a>  </p>
+* 本地solidity编译器，如：本地安装solc编译器（apt install solc）
+* 在线编辑器<a href="http://remix.ethereum.org/">Remix</a>
+* 开发框架，如<a href="https://eth-brownie.readthedocs.io/en/stable/">Brownie</a>  </p>
 <p>一旦合约对象被实例化了，可调用构造函数contructor的transact方法来发布一个合约实例，如下：  </p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="err">声明合约对象</span>
 <span class="n">ExampleContract</span> <span class="o">=</span> <span class="n">w3</span><span class="p">.</span><span class="n">eth</span><span class="p">.</span><span class="n">contract</span><span class="p">(</span><span class="n">abi</span><span class="o">=</span><span class="n">abi</span><span class="p">,</span> <span class="n">bytecode</span><span class="o">=</span><span class="n">bytecode</span><span class="p">)</span>
@@ -155,8 +155,8 @@ Released   : 20100928
 </code></pre></div>
 
 <p>如果你想从合约中获取数据（或者在本地查看事务结果，而不是在网络上执行），你可以使用：<br>
-- <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractFunction.call">ContractFunction.call</a>方法
-- <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractCaller">ContractCaller</a>方法</p>
+* <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractFunction.call">ContractFunction.call</a>方法
+* <a href="https://web3py.readthedocs.io/en/stable/contracts.html#web3.contract.ContractCaller">ContractCaller</a>方法</p>
 <div class="highlight"><pre><span></span><code><span class="err">deployed_contract.functions.getMyValue().call()</span>
 <span class="err"># 或者</span>
 <span class="err">deployed_contract.caller().getMyValue()</span>
@@ -206,9 +206,9 @@ Released   : 20100928
 </ul>
 <h1>Net API</h1>
 <p>一些基本的网络属性，可用web3.net查看
-- web3.net.listening
-- web3.net.peer_count
-- web3.net.version</p>
+* web3.net.listening
+* web3.net.peer_count
+* web3.net.version</p>
 <h1>ethPM</h1>
 <ul>
 <li>打包合同，以重复使用</li>
