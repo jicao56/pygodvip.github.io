@@ -15,7 +15,7 @@ Released   : 20100928
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>快速开始</title>
+<title>以太坊基础</title>
 <link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
 </head>
@@ -27,79 +27,143 @@ Released   : 20100928
     
                         	<div id="content">
 					<div class="post">
-						<h2 class="title"><a href="kuai-su-kai-shi.html">快速开始</a></h2>
-						<p class="meta"><span class="date">Le 2020-12-03 09:23:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/web3py.html">web3py</a></span></p>
-					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/zhi-neng-he-yue.html">智能合约</a> / </span>
-<span><a href="https://blog.pygod.vip/tag/web3.html">web3</a> / </span>
+						<h2 class="title"><a href="yi-tai-fang-ji-chu.html">以太坊基础</a></h2>
+						<p class="meta"><span class="date">Le 2020-12-07 14:47:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/ethereum.html">Ethereum</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/qu-kuai-lian.html">区块链</a> / </span>
 <span><a href="https://blog.pygod.vip/tag/ethereum.html">ethereum</a> / </span>
 </p>	
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-						 <h1>安装</h1>
-<p>使用pip命令安装：</p>
-<div class="highlight"><pre><span></span><code>$ pip install web3
-</code></pre></div>
-
-<h1>使用</h1>
-<p>该库依赖于以太坊节点的<strong>连接</strong>，如：本地开发的时候，启动的一个ganache-cli。 <br>
-我们称这些<strong>连接</strong>为<strong>providers</strong>，并且有很多方式可以去配置他们。具体参考(https://web3py.readthedocs.io/en/stable/providers.html#providers)  </p>
-<h2>provider: 本地Geth节点</h2>
-<h3>显示指定连接方式</h3>
-<p>显示的连接本地Geth节点有三种方式，分别如下  </p>
-<h4>IPC连接</h4>
-<p>最安全的</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">IPCProvider</span><span class="p">(</span><span class="s1">&#39;./path/to/geth.ipc&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h4>HTTP连接</h4>
-<p>端口8545</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://127.0.0.1:8545&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h4>websocket连接</h4>
-<p>端口8546</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">WebsocketProvider</span><span class="p">(</span><span class="s1">&#39;ws://127.0.0.1:8546&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h3>隐式自动连接</h3>
-<p>如果你坚持使用 <strong>默认端口</strong> 或者 <strong>本地IPC文件</strong>，可以自动检测provider。参考：(https://web3py.readthedocs.io/en/stable/providers.html#automatic-provider)  </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto</span> <span class="kn">import</span> <span class="n">w3</span>
-</code></pre></div>
-
-<h3>查看连接状态</h3>
-<div class="highlight"><pre><span></span><code><span class="err">w3.isConnected()</span>
-</code></pre></div>
-
-<h2>provider: Infura</h2>
-<p>在实际生产环境中，要与 以太坊区块链 交互的<strong>最快</strong>的方式，是使用 <strong>远程节点</strong>，如：<a href="https://infura.io/">Infura</a>。你可以通过指定节点(当你创建了一个账户后，有Infura提供)与远程节点连接，如：</p>
-<h3>显示连接</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;https://mainnet.infura.io/v3/&lt;infura-project-id&gt;&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-<h3>隐式连接</h3>
-<p>先将你的Infura项目id设置为环境变量</p>
+						 <h1>私钥/公钥/地址</h1>
+<ul>
+<li>私钥：一个256位的随机数，发送以太坊交易时，用于<strong>创建签名 来证明自己对资金的所有权</strong>。  </li>
+<li>公钥：一个512位(64字节)的数，由<strong>私钥</strong>通过<strong>椭圆曲线加密secp256k1算法</strong>单向生成的。  </li>
+<li>地址：由公钥的Keccak-256算法单向hash，并取的最后20个字节（160位）派生出来的标识符。  </li>
+</ul>
+<h1>安全须知</h1>
+<ul>
+<li>keystore文件就是加密存储的私钥。所以当系统提示你选择密码时：将其设置位强密码，备份并不要共享。如果你没有密码管理器，请将其写下来并锁在保险柜里。要访问账户，你必须同时有 <strong>keystore文件</strong> 和 <strong>密码</strong>。  </li>
+<li>助记词可以导出私钥，所以可以人为助记词就是私钥。请使用笔和纸进行<strong>物理备份</strong>。不要吧这个任务留给”以后“，你会忘记。  </li>
+<li>切勿以简单形式存储私钥，尤其是电子方式存储。  </li>
+<li>不要将私钥用电子形式存储，如：电子文档/数码照片/屏幕截图等等。使用<strong>密码管理器</strong> 或者 <strong>物理备份</strong>。  </li>
+<li>在转移大额金额之前，先做一个小额的测试交易。收到测试交易后，再尝试从该钱包发送。  </li>
+</ul>
+<h1>以太币单位</h1>
+<ul>
+<li>以太币的单位成为<strong>“以太”</strong>，也称为<strong>“ETH”</strong>，或符号<strong>“”</strong>  </li>
+<li>ether可以被细分为更小的单位，最小的单位为<strong>“wei”</strong>，<strong>1 ether = 10^18 wei</strong>  </li>
+<li>以太的值总是在以太坊内部表示为 <strong>以wei</strong>表示的无符号整数  </li>
+<li>以太的各个单位都有一个使用国际单位制（SI）的科学名称和一个口语名称。  <blockquote>
+<p><strong>以太币各单位名称</strong>  </p>
 <blockquote>
-<p>$ export WEB3_INFURA_PROJECT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<table>
+<thead>
+<tr>
+<th>值（wei）</th>
+<th>指数</th>
+<th>通用名称</th>
+<th>SI名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>wei</td>
+<td>wei</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>10^3</td>
+<td>babbage</td>
+<td>kilowei或者femtoether</td>
+</tr>
+<tr>
+<td>1000000</td>
+<td>10^6</td>
+<td>lovelace</td>
+<td>megawei或者picoether</td>
+</tr>
+<tr>
+<td>1000000000</td>
+<td>10^9</td>
+<td>shannon</td>
+<td>gigawei或者nanoether</td>
+</tr>
+<tr>
+<td>1000000000000</td>
+<td>10^12</td>
+<td>szabo</td>
+<td>microether或者micro</td>
+</tr>
+<tr>
+<td>1000000000000000</td>
+<td>10^15</td>
+<td>finney</td>
+<td>milliether或者milli</td>
+</tr>
+<tr>
+<td>1000000000000000000</td>
+<td>10^18</td>
+<td>ether</td>
+<td>ether</td>
+</tr>
+<tr>
+<td>1000000000000000000000</td>
+<td>10^21</td>
+<td>grand</td>
+<td>kiloether</td>
+</tr>
+<tr>
+<td>1000000000000000000000000</td>
+<td>10^24</td>
+<td></td>
+<td>megaether</td>
+</tr>
+</tbody>
+</table>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">web3.auto.infura</span> <span class="kn">import</span> <span class="n">w3</span>
-<span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">blockNumber</span>
-</code></pre></div>
-
-<h1>获取区块链信息</h1>
-<p>可以使用w3与以太坊区块链进行交互。
-web3可以帮助你：<br>
-- 读取块数据
-- 签署
-- 发送事务
-- 合约部署
-- 合约交互
-- 等等...</p>
-<p>使用<a href="https://web3py.readthedocs.io/en/stable/web3.eth.html#web3.eth.Eth">w3.eth</a>做很多事情  </p>
-<p>如果你想 进入合约/部署合约，请查看(https://web3py.readthedocs.io/en/stable/contracts.html#contracts)  </p>	
+</blockquote>
+</li>
+</ul>
+<h1>以太坊钱包</h1>
+<p>进入以太坊系统的门户，包含了私钥，代表我们创建和广播交易。<br>
+- <strong>MetaMask</strong>：一个浏览器扩展钱包，可在浏览器中运行。<br>
+- <strong>Jaxx</strong>：一款多平台/多币种的钱包，可在各种操作系统上运行，包括Android/ios/windows/mac/linux。<br>
+- <strong>MEW</strong>：MyEtherWallet，一个基于web的钱包，可以在任何浏览器中运行。<br>
+- <strong>Emerald Wallet</strong>：旨在与ETC配合使用，但与其他基于以太坊的区块链兼容。  </p>
+<h1>MetaMask</h1>
+<h2>安装metamask</h2>
+<p>在chrome浏览器中，安装metamask扩展。</p>
+<h2>第一次使用metamask</h2>
+<p>会要求创建metamask密码，验证助记词等，按操作往下走即可</p>
+<h2>切换网络</h2>
+<ul>
+<li><strong>Main Network（NetworkID：1）</strong><blockquote>
+<p>以太网的主网络。真正的ETH，真正的价值，真正的结果</p>
+</blockquote>
+</li>
+<li><strong>Ropsten Test Network（NetworkID：3）</strong><blockquote>
+<p>以太坊公共测试区块链和网络，使用工作量证明<strong>POW</strong>共识（挖矿）。该网络上的ETH没有任何价值 。除了ETH没有价值外，其他一切都一样，可以认为是主链的副本。 </p>
+</blockquote>
+</li>
+<li><strong>Kovan Test Network（NetworkID：42）</strong><blockquote>
+<p>以太坊公共测试区块链和网络，使用 <strong>“Aura”</strong> 协议进行权威证明<strong>POA</strong>共识（联合签名）。该网络上的ETH没有任何价值。此测试网络仅由<strong>Parity</strong>支持。主要针对parity客户端。  </p>
+</blockquote>
+</li>
+<li><strong>Rinkeby Test Network（NetworkID：4）</strong><blockquote>
+<p>以太坊公共测试区块链和网络，使用 <strong>“Clique”</strong> 协议进行权威证明<strong>POA</strong>共识（联合签名）。该网络上的ETH没有任何价值。主要针对gas客户端。  </p>
+</blockquote>
+</li>
+<li><strong>Localhost 8545</strong><blockquote>
+<p>连接到与浏览器在同一台计算机上运行的节点。该节点可以是任何的公共区块链节点，也可以是任何的私有测试节点。  </p>
+</blockquote>
+</li>
+<li><strong>Custom RPC</strong><blockquote>
+<p>允许将metamask连接到任意兼容<strong>geth</strong>的<strong>RPC</strong>接口的节点。该节点可以是任何<strong>公共</strong>或者<strong>私人</strong>区块链的<strong>一部分</strong>。  </p>
+</blockquote>
+</li>
+</ul>	
 						</div>
 					</div>
 			      
@@ -108,7 +172,7 @@ web3可以帮助你：<br>
                                         <h2 class="title">Commentaires !</h2>
                                             <div id="disqus_thread"></div>
                                             <script type="text/javascript">
-                                               var disqus_identifier = "kuai-su-kai-shi.html";
+                                               var disqus_identifier = "yi-tai-fang-ji-chu.html";
                                                (function() {
                                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                                                dsq.src = 'https://disqus_ca3p2R4hDP.disqus.com/embed.js';
@@ -134,10 +198,10 @@ web3可以帮助你：<br>
 							<ul>
 								 <li ><a href="https://blog.pygod.vip/category/debug.html">debug</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
-								 <li ><a href="https://blog.pygod.vip/category/ethereum.html">Ethereum</a></li>
+								 <li class="active"><a href="https://blog.pygod.vip/category/ethereum.html">Ethereum</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/jing-yan.html">经验</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/wang-luo.html">网络</a></li>
-								 <li class="active"><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
 							</ul>
 						</li>

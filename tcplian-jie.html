@@ -15,7 +15,7 @@ Released   : 20100928
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>markdown语法</title>
+<title>TCP连接</title>
 <link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
 </head>
@@ -27,13 +27,24 @@ Released   : 20100928
     
                         	<div id="content">
 					<div class="post">
-						<h2 class="title"><a href="markdownyu-fa.html">markdown语法</a></h2>
-						<p class="meta"><span class="date">Le 2020-11-21 11:10:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></span></p>
-					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a> / </span>
+						<h2 class="title"><a href="tcplian-jie.html">TCP连接</a></h2>
+						<p class="meta"><span class="date">Le 2020-12-11 10:30:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/wang-luo.html">网络</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/wang-luo.html">网络</a> / </span>
+<span><a href="https://blog.pygod.vip/tag/tcp.html">tcp</a> / </span>
 </p>	
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-						 <p>https://markdown.com.cn/basic-syntax/</p>	
+						 <h1>半关闭</h1>
+<p>当TCP连接中 A 向 B 发送FIN请求关闭，另一端B回应ACK之后，B没有立即发送FIN给A，A处于半连接状态，此时A可以接收B发送的消息，但是A已经不能再向B发送消息。</p>
+<h1>半连接</h1>
+<p>发送在三次握手中。<br>
+如果A向B发起连接，B也按照正常情况响应了，但是A不进行三次握手，这就是半连接。<br>
+<strong>半连接攻击</strong>：半连接，会造成B分配的内存资源就这么一直耗着，直到资源耗尽（SYN攻击）  </p>
+<h1>半打开</h1>
+<p>如果一方关闭或者异常关闭（断电，断网），而另一方并不知情，这样的连接称之为半打开。<br>
+处于半打开的连接，如果双方不进行数据通信，是发现不了问题的；只有再次通信时才会知道这个连接处于半打开状态。<br>
+如：A和B连接，B异常关闭了，A并不知道B关闭了，直到A给B发送消息B无响应，这时A才知道B出了异常。<br>
+<strong>解决办法</strong>：<strong>心跳机制</strong>，A隔一段时间给B发<em>特定消息</em>，B收到这个<em>特定消息</em>后，回复A<em>特定消息（RST包）</em>，A如果没收到RST包，就说明需要重新建立连接了。</p>	
 						</div>
 					</div>
 			      
@@ -42,7 +53,7 @@ Released   : 20100928
                                         <h2 class="title">Commentaires !</h2>
                                             <div id="disqus_thread"></div>
                                             <script type="text/javascript">
-                                               var disqus_identifier = "markdownyu-fa.html";
+                                               var disqus_identifier = "tcplian-jie.html";
                                                (function() {
                                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                                                dsq.src = 'https://disqus_ca3p2R4hDP.disqus.com/embed.js';
@@ -70,9 +81,9 @@ Released   : 20100928
 								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/ethereum.html">Ethereum</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/jing-yan.html">经验</a></li>
-								 <li ><a href="https://blog.pygod.vip/category/wang-luo.html">网络</a></li>
+								 <li class="active"><a href="https://blog.pygod.vip/category/wang-luo.html">网络</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
-								 <li class="active"><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
 							</ul>
 						</li>
 						<li>

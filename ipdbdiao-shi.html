@@ -15,7 +15,7 @@ Released   : 20100928
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>markdown语法</title>
+<title>ipdb调试</title>
 <link href="https://blog.pygod.vip/theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="https://blog.pygod.vip/" type="application/atom+xml" rel="alternate" title="博客 ATOM Feed" />
 </head>
@@ -27,13 +27,49 @@ Released   : 20100928
     
                         	<div id="content">
 					<div class="post">
-						<h2 class="title"><a href="markdownyu-fa.html">markdown语法</a></h2>
-						<p class="meta"><span class="date">Le 2020-11-21 11:10:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></span></p>
-					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/markdown.html">markdown</a> / </span>
+						<h2 class="title"><a href="ipdbdiao-shi.html">ipdb调试</a></h2>
+						<p class="meta"><span class="date">Le 2021-02-03 17:20:00 </span><span class="posted">Par <a href="#">hanf</a></span><span>&nbsp; | Catégorie : <a href="https://blog.pygod.vip/category/debug.html">debug</a></span></p>
+					<p class="meta">Tags : <span><a href="https://blog.pygod.vip/tag/debug.html">debug</a> / </span>
 </p>	
 						<div style="clear: both;">&nbsp;</div>
 						<div class="entry">
-						 <p>https://markdown.com.cn/basic-syntax/</p>	
+						 <h1>介绍</h1>
+<p>是一款集成了Ipython的Python代码命令行调试工具，可以看做PDB的升级版</p>
+<h1>为什么要用ipdb</h1>
+<p>开发一直是在pycharm下，虽然pycharm可以断点调试，但是程序是一直往下走的，没法像Viso那样拖动当前的位置，如果发现某个地方因为数据导致有问题，需要断开调试，修改完数据后，再次debug，很废时间。而ipdb可以通过<strong>jump 行数</strong>任意各种跳，相当方便。</p>
+<h1>安装</h1>
+<p>ipdb不是python内置的，需要手动安装，使用<strong>pip install ipdb</strong>即可安装</p>
+<h1>开始断点调试</h1>
+<h2>集成式</h2>
+<ol>
+<li>在代码中设置 <strong>ipdb.set_trace()</strong></li>
+<li>执行python代码，在<strong>ipdb.set_trace()</strong>的行会停下来，进入交互式调试模式。</li>
+</ol>
+<h2>命令式</h2>
+<p>集成式虽然方便，但是不够灵活，而且调试完后还要去掉<strong>ipdb.set_trace()</strong>代码，很麻烦。于是可以用命令式调试方法，启动ipdb调试环境的方法为：<br>
+<strong>python  -m  ipdb  代码文件.py</strong>  </p>
+<h1>常见命令</h1>
+<ul>
+<li>h(help) - 帮助文档</li>
+<li>l(list) 开始行  结束行 - 查看指定行数之间的代码。</li>
+<li>w(where) - 打印目前所在的行号位置以及上下文信息。</li>
+<li>j(jump) 行 - 跳转到指定行。</li>
+<li>n(next) - 单步执行。函数调用也是一个语句。</li>
+<li>s(step|step next) - 进入函数内部。</li>
+<li>a(args) - 进入函数内部后，打印函数的所有参数。</li>
+<li>u(up) - 跳回上一层调用</li>
+<li>d(down) - 跳到调用的下一层</li>
+<li>b(break)  [ ([filename:]lineno | function) [, condition] ] - 在指定文件（不指定，默认当前文件）指定行 打断点</li>
+<li>p(print) 变量 - 打印变量的值</li>
+<li>pp(pretty print) 变量 - 格式化打印变量的值</li>
+<li>c(continue) - 继续运行，直到遇到下一个断点</li>
+<li>cl(clear) filename:lineno - 清除断点（只能清除交互调试中打的断点，在代码中set_trace()是无法清除的）</li>
+<li>r(return) - 继续运行直到函数返回（函数内return语句，如果没有返回值，则跳到函数的最后）</li>
+<li>restart - 重新启动调试器，断点等信息都会保留</li>
+<li>q(quit) - 退出调试模式</li>
+<li>变量名 - 查看变量内容</li>
+<li>!变量名 - 如果代码中变量名与ipdb命令冲突，则使用 <strong>!</strong>  解决冲突。</li>
+</ul>	
 						</div>
 					</div>
 			      
@@ -42,7 +78,7 @@ Released   : 20100928
                                         <h2 class="title">Commentaires !</h2>
                                             <div id="disqus_thread"></div>
                                             <script type="text/javascript">
-                                               var disqus_identifier = "markdownyu-fa.html";
+                                               var disqus_identifier = "ipdbdiao-shi.html";
                                                (function() {
                                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                                                dsq.src = 'https://disqus_ca3p2R4hDP.disqus.com/embed.js';
@@ -66,13 +102,13 @@ Released   : 20100928
 						<li>
 							<h2>Catégories</h2>
 							<ul>
-								 <li ><a href="https://blog.pygod.vip/category/debug.html">debug</a></li>
+								 <li class="active"><a href="https://blog.pygod.vip/category/debug.html">debug</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/docker.html">Docker</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/ethereum.html">Ethereum</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/jing-yan.html">经验</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/wang-luo.html">网络</a></li>
 								 <li ><a href="https://blog.pygod.vip/category/web3py.html">web3py</a></li>
-								 <li class="active"><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
+								 <li ><a href="https://blog.pygod.vip/category/yu-fa.html">语法</a></li>
 							</ul>
 						</li>
 						<li>
